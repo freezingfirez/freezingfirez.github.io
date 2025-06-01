@@ -3,28 +3,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Simply Click - Support</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fisch, LLC | Nathan Fischer</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       background-color: #0a0a0a;
       color: #ffffff;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 2rem;
+      background: linear-gradient(to right, #1f1c2c, #928dab);
+      flex-wrap: wrap;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    .logo-container img {
+      width: 140px;
+      height: auto;
+    }
+    .profile-container {
+      text-align: center;
+      flex: 1 1 100%;
+      margin-top: 2rem;
+    }
+    .profile-container img {
+      width: 180px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      border: 3px solid #ffffff;
     }
     h1 {
-      color: #ffcc70;
-      font-size: 2.5rem;
+      margin: 1.5rem 0 0.5rem;
+      font-size: 2.8rem;
     }
-    p, li {
-      font-size: 1.1rem;
-      line-height: 1.6;
+    p.tagline {
+      font-size: 1.25rem;
       color: #d1d1d1;
     }
-    ul {
-      padding-left: 1.2rem;
+    section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ff8c00;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .project {
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid #2e2e2e;
+      transition: transform 0.3s ease;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+    }
+    .project h3 {
+      color: #ffcc70;
+      margin-bottom: 0.5rem;
+    }
+    .project p {
+      color: #cfcfcf;
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+      background: #111;
     }
     a {
       color: #ffcc70;
@@ -36,19 +99,51 @@
   </style>
 </head>
 <body>
-  <h1>Simply Click - Support</h1>
-  <p>Welcome to the support page for <strong>Simply Click</strong>, a clicker-style game created by Nathan Fischer.</p>
+  <header>
+    <div class="logo-container">
+      <a href="https://fischdesigns.com"><img src="logo.png" alt="Fisch, LLC Logo"></a>
+    </div>
+    <div class="profile-container">
+      <img src="profile.jpg" alt="Nathan's Profile Picture">
+      <h1>Nathan Fischer</h1>
+      <p class="tagline">iOS Developer @ <a href="https://fischdesigns.com">Fisch, LLC</a> | SwiftUI Builder | 16 y/o Creator</p>
+    </div>
+  </header>
 
-  <h2>Frequently Asked Questions</h2>
-  <ul>
-    <li><strong>Q:</strong> What is Simply Click?<br><strong>A:</strong> Simply Click is a SwiftUI-based game where you tap to gain points and reach milestones. More features like a shop and leaderboard are planned.</li>
-    <li><strong>Q:</strong> Where can I download it?<br><strong>A:</strong> Currently, Simply Click is in development and not yet on the App Store.</li>
-    <li><strong>Q:</strong> How do I report bugs or request features?<br><strong>A:</strong> You can contact me directly via email at <a href="mailto:nathan@fischdesigns.com">nathan@fischdesigns.com</a>.</li>
-  </ul>
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I'm Nathan, a 16-year-old iOS developer working with Fisch, LLC. I'm passionate about designing and coding modern apps that solve real-world problems. I specialize in SwiftUI and backend integration, aiming to blend simplicity with powerful features in everything I build.
+    </p>
+  </section>
 
-  <h2>Need More Help?</h2>
-  <p>If your question wasn’t answered above, feel free to email me or check back later for updates as development progresses.</p>
+  <section>
+    <h2>Current Project</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>Simply Click</h3>
+        <p>A SwiftUI-based clicker game that challenges users to reach milestones through tapping. It includes a counter, animations, and future features like a shop, leaderboard, and more.</p>
+      </div>
+    </div>
+  </section>
 
-  <p><a href="/">← Back to Home</a></p>
+  <section>
+    <h2>More Coming Soon</h2>
+    <p>
+      I'm always learning and building. More exciting projects — including advanced bots, creative tools, and apps — are on the way. Stay tuned!
+    </p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:nathan@fischdesigns.com">nathan@fischdesigns.com</a><br>
+       Phone: <a href="tel:8649159967">(864) 915-9967</a><br>
+       Website: <a href="https://fischdesigns.com">fischdesigns.com</a>
+    </p>
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 Fisch, LLC. Site by Nathan Fischer. Built with SwiftUI, love, and caffeine.
+  </footer>
 </body>
 </html>
