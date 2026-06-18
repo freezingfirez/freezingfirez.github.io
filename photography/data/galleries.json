@@ -6,52 +6,53 @@
     "automotive": [],
     "astronomy": []
   },
-  "carMeets": [],
-  "clients": [
+  "carMeets": [
     {
-      "id": "Camaro-Aiden",
+      "id": "meet-Camaro-Aiden",
       "name": "Camaro Aiden",
-      "password": "changeme",
-      "coverImage": "images/clients/Camaro-Aiden/DSC_4116.jpg",
+      "date": "",
+      "location": "",
       "description": "",
-      "expires": null,
+      "coverImage": "images/car-meets/Camaro-Aiden/DSC_4116.jpg",
+      "tag": "Monthly",
       "photos": [
         {
-          "id": "Camaro-Aiden-001",
+          "id": "meet-Camaro-Aiden-001",
           "title": "Dsc 4116",
-          "file": "images/clients/Camaro-Aiden/DSC_4116.jpg"
+          "file": "images/car-meets/Camaro-Aiden/DSC_4116.jpg"
         },
         {
-          "id": "Camaro-Aiden-002",
+          "id": "meet-Camaro-Aiden-002",
           "title": "Dsc 4124",
-          "file": "images/clients/Camaro-Aiden/DSC_4124.jpg"
+          "file": "images/car-meets/Camaro-Aiden/DSC_4124.jpg"
         },
         {
-          "id": "Camaro-Aiden-003",
+          "id": "meet-Camaro-Aiden-003",
           "title": "Dsc 4132",
-          "file": "images/clients/Camaro-Aiden/DSC_4132.jpg"
+          "file": "images/car-meets/Camaro-Aiden/DSC_4132.jpg"
         },
         {
-          "id": "Camaro-Aiden-004",
+          "id": "meet-Camaro-Aiden-004",
           "title": "Dsc 4160",
-          "file": "images/clients/Camaro-Aiden/DSC_4160.jpg"
+          "file": "images/car-meets/Camaro-Aiden/DSC_4160.jpg"
         },
         {
-          "id": "Camaro-Aiden-005",
+          "id": "meet-Camaro-Aiden-005",
           "title": "Dsc 4166",
-          "file": "images/clients/Camaro-Aiden/DSC_4166.jpg"
+          "file": "images/car-meets/Camaro-Aiden/DSC_4166.jpg"
         },
         {
-          "id": "Camaro-Aiden-006",
+          "id": "meet-Camaro-Aiden-006",
           "title": "Dsc 4169",
-          "file": "images/clients/Camaro-Aiden/DSC_4169.jpg"
+          "file": "images/car-meets/Camaro-Aiden/DSC_4169.jpg"
         },
         {
-          "id": "Camaro-Aiden-007",
+          "id": "meet-Camaro-Aiden-007",
           "title": "Dsc 4173",
-          "file": "images/clients/Camaro-Aiden/DSC_4173.jpg"
+          "file": "images/car-meets/Camaro-Aiden/DSC_4173.jpg"
         }
       ]
     }
-  ]
+  ],
+  "clients": []
 }
