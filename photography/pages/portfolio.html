@@ -81,24 +81,6 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Placeholder image map for categories (replace with real photos)
-  const placeholders = {
-    automotive: [
-      'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=70',
-      'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=70',
-      'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&q=70',
-      'https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?w=600&q=70',
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=70',
-      'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=70',
-    ],
-    astronomy: [
-      'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&q=70',
-      'https://images.unsplash.com/photo-1444492756863-04af4f06dafd?w=600&q=70',
-      'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=600&q=70',
-      'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&q=70',
-    ],
-  };
-
   async function initPortfolio() {
     const data = await loadData();
     const grid = document.getElementById('portfolio-grid');
@@ -108,58 +90,35 @@
     const categories = ['automotive', 'astronomy'];
 
     categories.forEach(cat => {
-      const catPhotos = data.portfolio[cat.replace('-', '-')] || data.portfolio[cat] || [];
-      catPhotos.forEach((photo, i) => {
-        // Use real file if it exists; fall back to placeholder
-        const imgSrc = placeholders[cat]?.[i] || placeholders[cat]?.[0];
-        allPhotos.push({ ...photo, _thumb: imgSrc, _cat: cat });
+      (data.portfolio?.[cat] || []).forEach(photo => {
+        allPhotos.push({ ...photo, _cat: cat });
       });
     });
 
-    // Build cards
+    if (!allPhotos.length) {
+      const empty = grid.querySelector('.empty-state');
+      if (empty) {
+        empty.style.display = 'block';
+        empty.querySelector('p').textContent =
+          'No photos yet — add JPGs to images/automotive/ or images/astronomy/, then run python3 scripts/sync_photos.py';
+      }
+      return;
+    }
+
     allPhotos.forEach((photo, idx) => {
       const wrapper = document.createElement('div');
       wrapper.dataset.filter = photo._cat;
       wrapper.dataset.title = (photo.title || '').toLowerCase();
       wrapper.setAttribute('role', 'listitem');
-
-      // Build photo object with placeholder src for lightbox
-      const lightboxPhoto = { ...photo, file: photo._thumb, thumb: photo._thumb };
-      const allLightboxPhotos = allPhotos.map(p => ({ ...p, file: p._thumb, thumb: p._thumb }));
-
-      const card = document.createElement('div');
-      card.className = 'photo-card';
-      card.innerHTML = `
-        <img class="photo-img lazy" data-src="${photo._thumb}" alt="${photo.title || ''}">
-        <div class="photo-overlay">
-          <div class="photo-meta">
-            <div class="photo-title">${photo.title || ''}</div>
-            ${photo.settings ? `<div class="photo-detail">${photo.settings}</div>` : ''}
-          </div>
-        </div>
-        <div class="photo-actions">
-          <button class="btn-icon" title="Download" onclick="downloadPhoto(event,'${photo._thumb}','${photo.title||'photo'}')">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-          </button>
-        </div>`;
-      card.addEventListener('click', e => {
-        if (e.target.closest('.photo-actions')) return;
-        openLightbox(allLightboxPhotos, idx);
-      });
-      wrapper.appendChild(card);
+      wrapper.appendChild(createPhotoCard(photo, allPhotos, idx));
       grid.insertBefore(wrapper, grid.querySelector('.empty-state'));
     });
 
-    // Apply URL param filter
-    const params = new URLSearchParams(window.location.search);
-    const cat = params.get('cat');
-    if (cat) {
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.category === cat);
-      });
-    }
-
     initFilters('#portfolio-grid', allPhotos, p => p._cat);
+
+    const cat = new URLSearchParams(window.location.search).get('cat');
+    if (cat) document.querySelector(`.filter-btn[data-category="${cat}"]`)?.click();
+
     initLazyLoad();
   }
 

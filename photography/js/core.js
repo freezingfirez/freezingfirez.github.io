@@ -34,6 +34,26 @@ function getBasePath() {
   return '/';
 }
 
+function imageUrl(path) {
+  if (!path) return '';
+  if (/^(https?:|data:)/i.test(path)) return path;
+  return getBasePath() + path.replace(/^\//, '');
+}
+
+function photoThumbPath(photo) {
+  return photo.thumb || photo.file || '';
+}
+
+function photoFilePath(photo) {
+  return photo.file || photo.thumb || '';
+}
+
+function meetCoverPath(meet) {
+  if (meet.coverImage) return meet.coverImage;
+  const first = meet.photos?.[0];
+  return first ? photoFilePath(first) : '';
+}
+
 // ============================================================
 // NAVIGATION
 // ============================================================
@@ -155,11 +175,11 @@ function shiftLightbox(dir) {
 function renderLightbox() {
   const { photos, index } = NP.lightbox;
   const photo = photos[index];
-  const base = getBasePath();
 
   const img = document.getElementById('lb-img');
   img.style.opacity = '0';
-  img.src = `${base}${photo.file}`;
+  const filePath = photoFilePath(photo);
+  img.src = imageUrl(filePath);
   img.alt = photo.title || '';
   img.onload = () => { img.style.opacity = '1'; img.style.transition = 'opacity 0.2s'; };
 
@@ -167,7 +187,7 @@ function renderLightbox() {
   document.getElementById('lb-counter').textContent = `${index + 1} / ${photos.length}`;
   document.getElementById('lb-meta').textContent = photo.settings || photo.camera || '';
   const dl = document.getElementById('lb-download');
-  dl.href = `${base}${photo.file}`;
+  dl.href = imageUrl(filePath);
   dl.download = (photo.title || 'photo').replace(/\s+/g, '-').toLowerCase() + '.jpg';
 
   document.getElementById('lb-prev').style.display = photos.length <= 1 ? 'none' : '';
@@ -201,27 +221,59 @@ function initLazyLoad() {
 // ============================================================
 // PHOTO CARD BUILDER
 // ============================================================
-function buildPhotoCard(photo, photos, index, basePath) {
+function createPhotoCard(photo, allPhotos, index, options = {}) {
   const card = document.createElement('div');
   card.className = 'photo-card';
-  card.innerHTML = `
-    <img class="photo-img lazy" data-src="${basePath}${photo.thumb || photo.file}" alt="${photo.title || ''}">
-    <div class="photo-overlay">
-      <div class="photo-meta">
-        <div class="photo-title">${photo.title || ''}</div>
-        ${photo.settings ? `<div class="photo-detail">${photo.settings}</div>` : ''}
-      </div>
-    </div>
-    <div class="photo-actions">
-      <button class="btn-icon" title="Download" onclick="downloadPhoto(event, '${basePath}${photo.file}', '${photo.title || 'photo'}')">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-      </button>
+  if (options.listitem) card.setAttribute('role', 'listitem');
+
+  const thumb = imageUrl(photoThumbPath(photo));
+  const file = imageUrl(photoFilePath(photo));
+
+  const img = document.createElement('img');
+  img.className = 'photo-img lazy';
+  img.dataset.src = thumb;
+  img.alt = photo.title || '';
+
+  const overlay = document.createElement('div');
+  overlay.className = 'photo-overlay';
+  overlay.innerHTML = `
+    <div class="photo-meta">
+      <div class="photo-title">${photo.title || ''}</div>
+      ${photo.settings ? `<div class="photo-detail">${photo.settings}</div>` : ''}
     </div>`;
+
+  const actions = document.createElement('div');
+  actions.className = 'photo-actions';
+  const dlBtn = document.createElement('button');
+  dlBtn.className = 'btn-icon';
+  dlBtn.title = 'Download';
+  dlBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`;
+  dlBtn.addEventListener('click', e => downloadPhoto(e, file, photo.title || 'photo'));
+  actions.appendChild(dlBtn);
+
+  card.append(img, overlay, actions);
   card.addEventListener('click', e => {
     if (e.target.closest('.photo-actions')) return;
-    openLightbox(photos, index);
+    openLightbox(allPhotos, index);
   });
   return card;
+}
+
+function downloadAllPhotos(photos, delayMs = 300) {
+  photos.forEach((photo, i) => {
+    setTimeout(() => {
+      downloadPhoto(
+        { stopPropagation: () => {} },
+        imageUrl(photoFilePath(photo)),
+        photo.title || `photo-${i + 1}`
+      );
+    }, i * delayMs);
+  });
+}
+
+/** @deprecated use createPhotoCard */
+function buildPhotoCard(photo, photos, index, basePath) {
+  return createPhotoCard(photo, photos, index);
 }
 
 // ============================================================

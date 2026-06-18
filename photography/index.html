@@ -48,8 +48,9 @@
     <!-- Replace this src with your own hero image path -->
     <img
       class="hero-image"
-      src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1600&q=80&auto=format"
-      alt="Hero automotive photography"
+      id="hero-image"
+      src=""
+      alt="Featured photo"
       loading="eager"
     >
     <div class="hero-bg"></div>
@@ -105,25 +106,7 @@
       <a href="pages/portfolio.html" class="btn btn-outline btn-sm">All Photos</a>
     </div>
 
-    <div class="featured-grid" id="featured-grid">
-      <!-- Injected by JS -->
-      <div class="photo-card" style="background:var(--surface-2)">
-        <img class="photo-img" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=75" alt="Loading…" style="aspect-ratio:4/3;object-fit:cover;width:100%;height:100%;">
-        <div class="photo-overlay" style="opacity:1;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent)">
-          <div class="photo-meta" style="transform:none">
-            <div class="photo-title">Featured Gallery</div>
-          </div>
-        </div>
-      </div>
-      <div class="photo-card" style="background:var(--surface-2)">
-        <img class="photo-img" src="https://images.unsplash.com/photo-1444492756863-04af4f06dafd?w=600&q=75" alt="Astronomy placeholder">
-        <div class="photo-overlay"><div class="photo-meta"><div class="photo-title">Night Sky</div></div></div>
-      </div>
-      <div class="photo-card" style="background:var(--surface-2)">
-        <img class="photo-img" src="https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?w=600&q=75" alt="Car placeholder">
-        <div class="photo-overlay"><div class="photo-meta"><div class="photo-title">Machine</div></div></div>
-      </div>
-    </div>
+    <div class="featured-grid" id="featured-grid"></div>
   </section>
 
   <div class="divider"></div>
@@ -134,9 +117,9 @@
       <div class="section-eyebrow">What You'll Find Here</div>
       <h2 class="section-title">GALLERIES</h2>
     </div>
-    <div class="gallery-grid">
-      <a href="pages/portfolio.html?cat=automotive" class="gallery-card" style="display:block;text-decoration:none">
-        <img class="gallery-card-img lazy" data-src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=75" alt="Automotive photography">
+    <div class="gallery-grid" id="category-grid">
+      <a href="pages/portfolio.html?cat=automotive" class="gallery-card" id="cat-automotive" style="display:block;text-decoration:none">
+        <img class="gallery-card-img lazy" data-src="" alt="Automotive photos">
         <div class="gallery-card-info">
           <div class="gallery-card-name">AUTOMOTIVE</div>
           <div class="gallery-card-meta">
@@ -145,8 +128,8 @@
         </div>
         <div class="gallery-tag">Portfolio</div>
       </a>
-      <a href="pages/portfolio.html?cat=astronomy" class="gallery-card" style="display:block;text-decoration:none">
-        <img class="gallery-card-img lazy" data-src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=75" alt="Astronomy photography">
+      <a href="pages/portfolio.html?cat=astronomy" class="gallery-card" id="cat-astronomy" style="display:block;text-decoration:none">
+        <img class="gallery-card-img lazy" data-src="" alt="Astronomy photos">
         <div class="gallery-card-info">
           <div class="gallery-card-name">ASTRONOMY</div>
           <div class="gallery-card-meta">
@@ -222,21 +205,46 @@
     const data = await loadData();
     if (!data) return;
 
-    // Stats
-    document.getElementById('stat-auto').textContent = data.portfolio.automotive.length + '+';
-    document.getElementById('stat-meets').textContent = data.carMeets.length;
-    document.getElementById('stat-astro').textContent = data.portfolio.astronomy.length + '+';
+    const auto = data.portfolio?.automotive || [];
+    const astro = data.portfolio?.astronomy || [];
+    const meets = data.carMeets || [];
 
-    // Home meets preview (first 2)
+    document.getElementById('stat-auto').textContent = auto.length ? `${auto.length}` : '—';
+    document.getElementById('stat-meets').textContent = meets.length || '—';
+    document.getElementById('stat-astro').textContent = astro.length ? `${astro.length}` : '—';
+
+    const heroPath = data.site?.hero || auto[0]?.file || astro[0]?.file;
+    if (heroPath) {
+      document.getElementById('hero-image').src = imageUrl(heroPath);
+    }
+
+    const featured = [...auto.slice(0, 2), ...astro.slice(0, 1)].slice(0, 3);
+    const featuredGrid = document.getElementById('featured-grid');
+    if (featured.length) {
+      featured.forEach((photo, i) => {
+        featuredGrid.appendChild(createPhotoCard(photo, featured, i));
+      });
+    } else {
+      featuredGrid.innerHTML = '<p style="color:var(--grey-mid);font-size:0.95rem">Add photos to <code style="color:var(--amber)">images/automotive/</code> or <code style="color:var(--amber)">images/astronomy/</code>, then run <code style="color:var(--amber)">python3 scripts/sync_photos.py</code>.</p>';
+    }
+
+    const setCategoryThumb = (id, photos) => {
+      const el = document.querySelector(`#${id} .gallery-card-img`);
+      if (el && photos[0]) el.dataset.src = imageUrl(photoThumbPath(photos[0]));
+    };
+    setCategoryThumb('cat-automotive', auto);
+    setCategoryThumb('cat-astronomy', astro);
+
     const grid = document.getElementById('home-meets-grid');
     if (grid) {
-      data.carMeets.slice(0, 2).forEach(meet => {
+      meets.slice(0, 2).forEach(meet => {
+        const cover = meetCoverPath(meet);
         const card = document.createElement('a');
         card.href = `pages/car-meets.html?meet=${meet.id}`;
         card.className = 'gallery-card';
         card.style.display = 'block';
         card.innerHTML = `
-          <img class="gallery-card-img lazy" data-src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75" alt="${meet.name}">
+          <img class="gallery-card-img lazy" data-src="${imageUrl(cover)}" alt="${meet.name}">
           <div class="gallery-card-info">
             <div class="gallery-card-name">${meet.name.toUpperCase()}</div>
             <div class="gallery-card-meta">
@@ -247,8 +255,9 @@
           <div class="gallery-tag">${meet.tag}</div>`;
         grid.appendChild(card);
       });
-      initLazyLoad();
     }
+
+    initLazyLoad();
   }
 
   initHome();
