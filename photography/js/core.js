@@ -235,7 +235,7 @@ function downloadPhoto(e, url, title) {
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-  showToast('Download started');
+  showToast('Downloading…');
 }
 
 // ============================================================

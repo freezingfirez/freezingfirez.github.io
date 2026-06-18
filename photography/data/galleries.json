@@ -113,7 +113,8 @@
         "settings": "f/8 · 1/500s · ISO 200",
         "date": "2024-01-06"
       }
-    ],
+    ]
+  },
 
   "carMeets": [
     {
@@ -207,36 +208,36 @@
 
   "clients": [
     {
-      "id": "client-smith-wedding",
-      "name": "Smith – Wedding Portraits",
-      "password": "smith2024",
-      "coverImage": "images/clients/smith-wedding/cover.jpg",
-      "description": "Private gallery — Smith family wedding portraits.",
-      "expires": "2025-06-01",
+      "id": "car-mike-gt350",
+      "name": "Mike's GT350",
+      "password": "gt350",
+      "coverImage": "images/clients/mike-gt350/cover.jpg",
+      "description": "Cars & Coffee — March 2024. Grab whatever you like.",
+      "expires": null,
       "photos": [
         {
-          "id": "sw-001",
-          "title": "Portrait 01",
-          "file": "images/clients/smith-wedding/01.jpg"
+          "id": "mg-001",
+          "title": "Front Angle",
+          "file": "images/clients/mike-gt350/01.jpg"
         },
         {
-          "id": "sw-002",
-          "title": "Portrait 02",
-          "file": "images/clients/smith-wedding/02.jpg"
+          "id": "mg-002",
+          "title": "Detail Shot",
+          "file": "images/clients/mike-gt350/02.jpg"
         }
       ]
     },
     {
       "id": "client-demo",
-      "name": "Demo Client Gallery",
+      "name": "Demo Gallery",
       "password": "demo123",
       "coverImage": "images/clients/demo/cover.jpg",
-      "description": "Sample private gallery — password: demo123",
+      "description": "Example gallery so you can see how this works — password is demo123.",
       "expires": null,
       "photos": [
         {
           "id": "demo-001",
-          "title": "Sample Photo 01",
+          "title": "Sample Photo",
           "file": "images/clients/demo/01.jpg"
         }
       ]
