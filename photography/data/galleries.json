@@ -1,0 +1,281 @@
+{
+  "portfolio": {
+    "automotive": [
+      {
+        "id": "auto-001",
+        "title": "Carbon Series",
+        "description": "Track-day detail shots capturing the geometry of performance.",
+        "file": "images/automotive/placeholder-1.jpg",
+        "thumb": "images/automotive/placeholder-1.jpg",
+        "tags": ["automotive", "detail", "track"],
+        "camera": "Nikon D7100",
+        "settings": "f/2.8 · 1/1000s · ISO 200",
+        "date": "2024-03-15"
+      },
+      {
+        "id": "auto-002",
+        "title": "Headlight Study",
+        "description": "Low-light chrome study of a classic muscle car.",
+        "file": "images/automotive/placeholder-2.jpg",
+        "thumb": "images/automotive/placeholder-2.jpg",
+        "tags": ["automotive", "night", "muscle"],
+        "camera": "Nikon D7100",
+        "settings": "f/4 · 1/60s · ISO 1600",
+        "date": "2024-02-08"
+      },
+      {
+        "id": "auto-003",
+        "title": "Golden Hour Roll",
+        "description": "Rolling shot on the back roads of South Carolina.",
+        "file": "images/automotive/placeholder-3.jpg",
+        "thumb": "images/automotive/placeholder-3.jpg",
+        "tags": ["automotive", "rolling", "golden-hour"],
+        "camera": "Nikon D7100",
+        "settings": "f/8 · 1/500s · ISO 100",
+        "date": "2024-01-20"
+      },
+      {
+        "id": "auto-004",
+        "title": "Wheel Geometry",
+        "description": "Abstract angles of a forged wheel at low angle.",
+        "file": "images/automotive/placeholder-4.jpg",
+        "thumb": "images/automotive/placeholder-4.jpg",
+        "tags": ["automotive", "detail", "abstract"],
+        "camera": "Nikon D7100",
+        "settings": "f/5.6 · 1/250s · ISO 400",
+        "date": "2023-12-10"
+      },
+      {
+        "id": "auto-005",
+        "title": "Night Spec",
+        "description": "Long exposure light trails with parked JDM import.",
+        "file": "images/automotive/placeholder-5.jpg",
+        "thumb": "images/automotive/placeholder-5.jpg",
+        "tags": ["automotive", "night", "jdm", "long-exposure"],
+        "camera": "Nikon D7100",
+        "settings": "f/11 · 8s · ISO 100",
+        "date": "2023-11-05"
+      },
+      {
+        "id": "auto-006",
+        "title": "Fog Line",
+        "description": "Early morning mist on the Blue Ridge Parkway.",
+        "file": "images/automotive/placeholder-6.jpg",
+        "thumb": "images/automotive/placeholder-6.jpg",
+        "tags": ["automotive", "scenic", "mountain"],
+        "camera": "Nikon D7100",
+        "settings": "f/6.3 · 1/320s · ISO 200",
+        "date": "2023-10-01"
+      }
+    ],
+    "astronomy": [
+      {
+        "id": "astro-001",
+        "title": "Milky Way Core",
+        "description": "Dark sky site outside Travelers Rest — unprocessed RAW stacked.",
+        "file": "images/astronomy/placeholder-1.jpg",
+        "thumb": "images/astronomy/placeholder-1.jpg",
+        "tags": ["astronomy", "milky-way", "landscape"],
+        "camera": "Nikon D7100",
+        "settings": "f/2.8 · 25s · ISO 3200",
+        "date": "2024-04-12"
+      },
+      {
+        "id": "astro-002",
+        "title": "Saturn Opposition",
+        "description": "12-frame stack of Saturn at closest approach, 2023.",
+        "file": "images/astronomy/placeholder-2.jpg",
+        "thumb": "images/astronomy/placeholder-2.jpg",
+        "tags": ["astronomy", "planetary", "saturn"],
+        "camera": "Nikon D7100",
+        "settings": "f/10 · 1/100s · ISO 400",
+        "date": "2023-08-27"
+      },
+      {
+        "id": "astro-003",
+        "title": "Star Trails",
+        "description": "90-minute composite rotation above the Upstate SC treeline.",
+        "file": "images/astronomy/placeholder-3.jpg",
+        "thumb": "images/astronomy/placeholder-3.jpg",
+        "tags": ["astronomy", "star-trails", "long-exposure"],
+        "camera": "Nikon D7100",
+        "settings": "f/4 · 30s × 180 frames · ISO 800",
+        "date": "2023-07-04"
+      },
+      {
+        "id": "astro-004",
+        "title": "Lunar Detail",
+        "description": "Crescent moon terminator detail with a 400mm reach.",
+        "file": "images/astronomy/placeholder-4.jpg",
+        "thumb": "images/astronomy/placeholder-4.jpg",
+        "tags": ["astronomy", "moon", "detail"],
+        "camera": "Nikon D7100",
+        "settings": "f/8 · 1/500s · ISO 200",
+        "date": "2024-01-06"
+      }
+    ],
+    "real-estate": [
+      {
+        "id": "re-001",
+        "title": "Lakefront Listing",
+        "description": "Twilight exterior bracketed HDR, Lake Keowee property.",
+        "file": "images/real-estate/placeholder-1.jpg",
+        "thumb": "images/real-estate/placeholder-1.jpg",
+        "tags": ["real-estate", "exterior", "twilight"],
+        "camera": "Nikon D7100",
+        "settings": "f/8 · 1/15s · ISO 400",
+        "date": "2024-03-01"
+      },
+      {
+        "id": "re-002",
+        "title": "Modern Interior",
+        "description": "Open floor plan great room, natural light balanced with flash.",
+        "file": "images/real-estate/placeholder-2.jpg",
+        "thumb": "images/real-estate/placeholder-2.jpg",
+        "tags": ["real-estate", "interior", "modern"],
+        "camera": "Nikon D7100",
+        "settings": "f/7.1 · 1/30s · ISO 400",
+        "date": "2024-02-14"
+      },
+      {
+        "id": "re-003",
+        "title": "Kitchen Feature",
+        "description": "Marble island and pendant lighting detail.",
+        "file": "images/real-estate/placeholder-3.jpg",
+        "thumb": "images/real-estate/placeholder-3.jpg",
+        "tags": ["real-estate", "interior", "kitchen"],
+        "camera": "Nikon D7100",
+        "settings": "f/5.6 · 1/40s · ISO 800",
+        "date": "2024-01-28"
+      }
+    ]
+  },
+
+  "carMeets": [
+    {
+      "id": "meet-001",
+      "name": "Greenville Cars & Coffee",
+      "date": "March 2024",
+      "location": "Greenville, SC",
+      "description": "Monthly sunrise meet at the TD Convention Center. Over 200 vehicles spanning JDM, Euro, and classic American iron.",
+      "coverImage": "images/car-meets/meet-001/cover.jpg",
+      "tag": "Monthly",
+      "photos": [
+        {
+          "id": "m1-001",
+          "title": "Line Up",
+          "file": "images/car-meets/meet-001/01.jpg",
+          "settings": "f/4 · 1/400s · ISO 200"
+        },
+        {
+          "id": "m1-002",
+          "title": "JDM Corner",
+          "file": "images/car-meets/meet-001/02.jpg",
+          "settings": "f/2.8 · 1/500s · ISO 200"
+        },
+        {
+          "id": "m1-003",
+          "title": "Detail Study",
+          "file": "images/car-meets/meet-001/03.jpg",
+          "settings": "f/5.6 · 1/800s · ISO 100"
+        }
+      ]
+    },
+    {
+      "id": "meet-002",
+      "name": "Upstate Import Takeover",
+      "date": "February 2024",
+      "location": "Spartanburg, SC",
+      "description": "Night meet focused on import culture — slammed builds, wide bodies, and neon.",
+      "coverImage": "images/car-meets/meet-002/cover.jpg",
+      "tag": "Import",
+      "photos": [
+        {
+          "id": "m2-001",
+          "title": "Night Glow",
+          "file": "images/car-meets/meet-002/01.jpg",
+          "settings": "f/2.8 · 1/80s · ISO 2000"
+        },
+        {
+          "id": "m2-002",
+          "title": "Wide Body",
+          "file": "images/car-meets/meet-002/02.jpg",
+          "settings": "f/4 · 1/60s · ISO 1600"
+        }
+      ]
+    },
+    {
+      "id": "meet-003",
+      "name": "Blue Ridge Classic",
+      "date": "October 2023",
+      "location": "Hendersonville, NC",
+      "description": "Annual fall color cruise and show — classics and muscle cars with mountain backdrops.",
+      "coverImage": "images/car-meets/meet-003/cover.jpg",
+      "tag": "Classic",
+      "photos": [
+        {
+          "id": "m3-001",
+          "title": "Fall Color",
+          "file": "images/car-meets/meet-003/01.jpg",
+          "settings": "f/8 · 1/250s · ISO 100"
+        },
+        {
+          "id": "m3-002",
+          "title": "Chrome Detail",
+          "file": "images/car-meets/meet-003/02.jpg",
+          "settings": "f/5.6 · 1/320s · ISO 200"
+        },
+        {
+          "id": "m3-003",
+          "title": "Sunset Convoy",
+          "file": "images/car-meets/meet-003/03.jpg",
+          "settings": "f/7.1 · 1/500s · ISO 100"
+        },
+        {
+          "id": "m3-004",
+          "title": "Mountain Backdrop",
+          "file": "images/car-meets/meet-003/04.jpg",
+          "settings": "f/9 · 1/320s · ISO 200"
+        }
+      ]
+    }
+  ],
+
+  "clients": [
+    {
+      "id": "client-smith-wedding",
+      "name": "Smith – Wedding Portraits",
+      "password": "smith2024",
+      "coverImage": "images/clients/smith-wedding/cover.jpg",
+      "description": "Private gallery — Smith family wedding portraits.",
+      "expires": "2025-06-01",
+      "photos": [
+        {
+          "id": "sw-001",
+          "title": "Portrait 01",
+          "file": "images/clients/smith-wedding/01.jpg"
+        },
+        {
+          "id": "sw-002",
+          "title": "Portrait 02",
+          "file": "images/clients/smith-wedding/02.jpg"
+        }
+      ]
+    },
+    {
+      "id": "client-demo",
+      "name": "Demo Client Gallery",
+      "password": "demo123",
+      "coverImage": "images/clients/demo/cover.jpg",
+      "description": "Sample private gallery — password: demo123",
+      "expires": null,
+      "photos": [
+        {
+          "id": "demo-001",
+          "title": "Sample Photo 01",
+          "file": "images/clients/demo/01.jpg"
+        }
+      ]
+    }
+  ]
+}
