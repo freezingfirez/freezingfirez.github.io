@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nathan Fischer Photography — Private Client Galleries.">
+  <title>Client Galleries — Nathan Fischer Photography</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><polygon points='18,0 36,9 36,27 18,36 0,27 0,9' fill='%23E8A020'/><text x='18' y='24' text-anchor='middle' font-size='16' font-family='sans-serif' fill='%230A0A0A' font-weight='bold'>N</text></svg>">
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="../index.html" class="nav-logo" aria-label="Nathan Photography Home">
+    <div class="nav-logo-mark"><span>N</span></div>
+    <div class="nav-logo-text">
+      <span class="name">Nathan Fischer</span>
+      <span class="tagline">Photography</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="car-meets.html">Car Meets</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="clients.html">Clients</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" role="menu">
+  <a href="../index.html">Home</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="car-meets.html">Car Meets</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="clients.html">Clients</a>
+</div>
+
+<div class="page">
+
+  <!-- GALLERY SELECTOR VIEW -->
+  <div id="view-select">
+    <section class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Private Access</div>
+        <h1 class="section-title">CLIENT<br>GALLERIES</h1>
+        <p class="section-sub">Exclusive galleries for booked clients. Select your gallery and enter the password provided after your session.</p>
+      </div>
+      <div id="client-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;max-width:900px"></div>
+    </section>
+  </div>
+
+  <!-- PASSWORD GATE VIEW -->
+  <div id="view-gate" style="display:none">
+    <div class="section">
+      <div class="client-gate">
+        <div class="client-gate-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <h2 id="gate-title">Private Gallery</h2>
+        <p id="gate-desc">Enter the password provided by Nathan to access your photos.</p>
+
+        <div class="form-group" style="text-align:left">
+          <label class="form-label" for="gallery-password">Gallery Password</label>
+          <input
+            class="form-input"
+            type="password"
+            id="gallery-password"
+            placeholder="Enter password…"
+            autocomplete="current-password"
+          >
+        </div>
+        <div class="client-gate-error" id="gate-error">Incorrect password — try again.</div>
+
+        <button class="btn btn-primary" id="gate-submit" style="width:100%;margin-top:1rem">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" d="M8 11V7a4 4 0 018 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+          Unlock Gallery
+        </button>
+
+        <button class="back-btn" id="gate-back" style="margin:1.5rem auto 0;display:flex;justify-content:center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          All Galleries
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY CONTENT VIEW -->
+  <div id="view-gallery" style="display:none">
+    <section class="section">
+      <button class="back-btn" id="gallery-back">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        All Galleries
+      </button>
+
+      <div class="section-header">
+        <div class="section-eyebrow">Private Gallery</div>
+        <h2 class="section-title" id="gallery-title"></h2>
+        <p class="section-sub" id="gallery-desc"></p>
+      </div>
+
+      <div style="margin-bottom:1.5rem">
+        <button class="btn btn-primary btn-sm" id="download-all-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download All Photos
+        </button>
+      </div>
+
+      <div class="photo-grid" id="gallery-grid" role="list"></div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <span class="footer-copy">© <span id="year"></span> <span>Nathan Fischer Photography</span></span>
+      <a href="../index.html" class="footer-copy" style="color:var(--amber)">← Back to Home</a>
+    </div>
+  </footer>
+</div>
+
+<script src="../js/core.js"></script>
+<script>
+  /*
+   * ============================================================
+   * CLIENT GALLERY SYSTEM
+   * ============================================================
+   * IMPORTANT: This is a FRONTEND-ONLY password system.
+   * Passwords are stored in data/galleries.json under "clients".
+   * They are NOT cryptographically secure — anyone who inspects
+   * the JSON file on GitHub can see them.
+   *
+   * For real paid clients:
+   *   - Use a backend service (Netlify Functions, Supabase, etc.)
+   *   - Or use a service like Pixieset or CloudSpot for paid work
+   *
+   * For early use / low-stakes sharing:
+   *   - This system is totally fine — it deters casual browsing
+   *   - Just tell clients the password verbally or via DM
+   *
+   * TO ADD A NEW CLIENT GALLERY:
+   * 1. Add photos to images/clients/your-client-name/
+   * 2. Add an entry to data/galleries.json under "clients"
+   * 3. Set a password (anything you like)
+   * ============================================================
+   */
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  let allClients = [];
+  let activeClient = null;
+  const photoPlaceholders = [
+    'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=70',
+    'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=70',
+    'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=600&q=70',
+    'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=70',
+  ];
+
+  // Check session storage for already-unlocked galleries
+  function getUnlocked() {
+    try { return JSON.parse(sessionStorage.getItem('np_unlocked') || '{}'); }
+    catch { return {}; }
+  }
+  function setUnlocked(id) {
+    const u = getUnlocked();
+    u[id] = true;
+    try { sessionStorage.setItem('np_unlocked', JSON.stringify(u)); } catch {}
+  }
+
+  async function initClients() {
+    const data = await loadData();
+    if (!data) return;
+    allClients = data.clients || [];
+
+    const list = document.getElementById('client-list');
+    allClients.forEach(client => {
+      const card = document.createElement('div');
+      card.style.cssText = 'background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:border-color 0.22s';
+      card.addEventListener('mouseenter', () => { card.style.borderColor = 'var(--amber-dim)'; });
+      card.addEventListener('mouseleave', () => { card.style.borderColor = 'var(--border)'; });
+      const unlocked = getUnlocked()[client.id];
+      card.innerHTML = `
+        <div style="background:var(--surface-2);padding:2.5rem 1.5rem;text-align:center">
+          <div style="width:52px;height:52px;background:var(--amber-glow);border:1px solid var(--amber-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--amber)">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="width:22px;height:22px"><path stroke-linecap="round" stroke-linejoin="round" d="${unlocked ? 'M8 11V7a4 4 0 018 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z' : 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z'}"/></svg>
+          </div>
+          <div style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:0.06em;margin-bottom:4px">${client.name.toUpperCase()}</div>
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;color:${unlocked ? 'var(--amber)' : 'var(--grey-mid)'};text-transform:uppercase">${unlocked ? '✓ Unlocked' : `${client.photos.length} Photos`}</div>
+        </div>
+        <div style="padding:1rem 1.5rem;border-top:1px solid var(--border)">
+          <p style="font-size:0.85rem;color:var(--grey-mid);margin-bottom:0.75rem">${client.description || ''}</p>
+          <button class="btn btn-${unlocked ? 'primary' : 'outline'} btn-sm" style="width:100%">${unlocked ? 'View Photos' : 'Enter Password'}</button>
+        </div>`;
+      card.addEventListener('click', () => {
+        activeClient = client;
+        if (getUnlocked()[client.id]) {
+          showGallery(client);
+        } else {
+          showGate(client);
+        }
+      });
+      list.appendChild(card);
+    });
+  }
+
+  function showGate(client) {
+    document.getElementById('view-select').style.display = 'none';
+    document.getElementById('view-gate').style.display = '';
+    document.getElementById('view-gallery').style.display = 'none';
+    document.getElementById('gate-title').textContent = client.name;
+    document.getElementById('gate-desc').textContent = client.description || 'Enter the password provided by Nathan.';
+    document.getElementById('gallery-password').value = '';
+    document.getElementById('gate-error').classList.remove('show');
+    document.getElementById('gallery-password').focus();
+  }
+
+  function showGallery(client) {
+    document.getElementById('view-select').style.display = 'none';
+    document.getElementById('view-gate').style.display = 'none';
+    const view = document.getElementById('view-gallery');
+    view.style.display = '';
+
+    document.getElementById('gallery-title').textContent = client.name.toUpperCase();
+    document.getElementById('gallery-desc').textContent = client.description || '';
+
+    const grid = document.getElementById('gallery-grid');
+    grid.innerHTML = '';
+
+    const lightboxPhotos = client.photos.map((p, i) => ({
+      ...p,
+      file: photoPlaceholders[i % photoPlaceholders.length],
+      thumb: photoPlaceholders[i % photoPlaceholders.length],
+    }));
+
+    client.photos.forEach((photo, i) => {
+      const src = photoPlaceholders[i % photoPlaceholders.length];
+      const card = document.createElement('div');
+      card.className = 'photo-card';
+      card.innerHTML = `
+        <img class="photo-img lazy" data-src="${src}" alt="${photo.title || ''}">
+        <div class="photo-overlay">
+          <div class="photo-meta">
+            <div class="photo-title">${photo.title || ''}</div>
+          </div>
+        </div>
+        <div class="photo-actions">
+          <button class="btn-icon" title="Download" onclick="downloadPhoto(event,'${src}','${photo.title||'photo'}')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          </button>
+        </div>`;
+      card.addEventListener('click', e => {
+        if (e.target.closest('.photo-actions')) return;
+        openLightbox(lightboxPhotos, i);
+      });
+      grid.appendChild(card);
+    });
+
+    // Download All button
+    document.getElementById('download-all-btn').onclick = () => {
+      client.photos.forEach((p, i) => {
+        setTimeout(() => {
+          downloadPhoto({ stopPropagation: () => {} },
+            photoPlaceholders[i % photoPlaceholders.length],
+            p.title || `photo-${i+1}`
+          );
+        }, i * 300);
+      });
+    };
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    initLazyLoad();
+  }
+
+  function backToSelect() {
+    document.getElementById('view-gate').style.display = 'none';
+    document.getElementById('view-gallery').style.display = 'none';
+    document.getElementById('view-select').style.display = '';
+    activeClient = null;
+  }
+
+  // Password submission
+  document.getElementById('gate-submit').addEventListener('click', () => {
+    const input = document.getElementById('gallery-password').value.trim();
+    const error = document.getElementById('gate-error');
+
+    if (!activeClient) return;
+    if (input === activeClient.password) {
+      setUnlocked(activeClient.id);
+      error.classList.remove('show');
+      showGallery(activeClient);
+    } else {
+      error.classList.add('show');
+      document.getElementById('gallery-password').focus();
+    }
+  });
+
+  document.getElementById('gallery-password').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('gate-submit').click();
+  });
+
+  document.getElementById('gate-back').addEventListener('click', backToSelect);
+  document.getElementById('gallery-back').addEventListener('click', backToSelect);
+
+  initClients();
+</script>
+</body>
+</html>
