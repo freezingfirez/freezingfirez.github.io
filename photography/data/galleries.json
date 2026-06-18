@@ -114,42 +114,6 @@
         "date": "2024-01-06"
       }
     ],
-    "real-estate": [
-      {
-        "id": "re-001",
-        "title": "Lakefront Listing",
-        "description": "Twilight exterior bracketed HDR, Lake Keowee property.",
-        "file": "images/real-estate/placeholder-1.jpg",
-        "thumb": "images/real-estate/placeholder-1.jpg",
-        "tags": ["real-estate", "exterior", "twilight"],
-        "camera": "Nikon D7100",
-        "settings": "f/8 · 1/15s · ISO 400",
-        "date": "2024-03-01"
-      },
-      {
-        "id": "re-002",
-        "title": "Modern Interior",
-        "description": "Open floor plan great room, natural light balanced with flash.",
-        "file": "images/real-estate/placeholder-2.jpg",
-        "thumb": "images/real-estate/placeholder-2.jpg",
-        "tags": ["real-estate", "interior", "modern"],
-        "camera": "Nikon D7100",
-        "settings": "f/7.1 · 1/30s · ISO 400",
-        "date": "2024-02-14"
-      },
-      {
-        "id": "re-003",
-        "title": "Kitchen Feature",
-        "description": "Marble island and pendant lighting detail.",
-        "file": "images/real-estate/placeholder-3.jpg",
-        "thumb": "images/real-estate/placeholder-3.jpg",
-        "tags": ["real-estate", "interior", "kitchen"],
-        "camera": "Nikon D7100",
-        "settings": "f/5.6 · 1/40s · ISO 800",
-        "date": "2024-01-28"
-      }
-    ]
-  },
 
   "carMeets": [
     {
