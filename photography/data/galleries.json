@@ -3,7 +3,128 @@
     "portrait": "images/about/portrait.jpg"
   },
   "portfolio": {
-    "automotive": [],
+    "automotive": [
+      {
+        "id": "auto-001",
+        "title": "Dsc 2164",
+        "file": "images/automotive/DSC_2164.jpg",
+        "thumb": "images/automotive/DSC_2164.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "auto-002",
+        "title": "Dsc 2167",
+        "file": "images/automotive/DSC_2167.jpg",
+        "thumb": "images/automotive/DSC_2167.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "auto-003",
+        "title": "Dsc 2199",
+        "file": "images/automotive/DSC_2199.jpg",
+        "thumb": "images/automotive/DSC_2199.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "auto-004",
+        "title": "Dsc 2726",
+        "file": "images/automotive/DSC_2726.jpg",
+        "thumb": "images/automotive/DSC_2726.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "auto-005",
+        "title": "Dsc 2749",
+        "file": "images/automotive/DSC_2749.jpg",
+        "thumb": "images/automotive/DSC_2749.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "auto-006",
+        "title": "Dsc 3945",
+        "file": "images/automotive/DSC_3945.jpg",
+        "thumb": "images/automotive/DSC_3945.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "auto-007",
+        "title": "Dsc 3958",
+        "file": "images/automotive/DSC_3958.jpg",
+        "thumb": "images/automotive/DSC_3958.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "auto-008",
+        "title": "Dsc 3978",
+        "file": "images/automotive/DSC_3978.jpg",
+        "thumb": "images/automotive/DSC_3978.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "auto-009",
+        "title": "Dsc 3991",
+        "file": "images/automotive/DSC_3991.jpg",
+        "thumb": "images/automotive/DSC_3991.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "auto-010",
+        "title": "Dsc 4014",
+        "file": "images/automotive/DSC_4014.jpg",
+        "thumb": "images/automotive/DSC_4014.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "auto-011",
+        "title": "Dsc 4033 2",
+        "file": "images/automotive/DSC_4033-2.jpg",
+        "thumb": "images/automotive/DSC_4033-2.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "auto-012",
+        "title": "Dsc 4124",
+        "file": "images/automotive/dsc-4124.jpg",
+        "thumb": "images/automotive/dsc-4124.jpg",
+        "tags": [
+          "automotive"
+        ],
+        "camera": "Nikon D7100"
+      }
+    ],
     "astronomy": []
   },
   "carMeets": [
