@@ -125,7 +125,58 @@
         "camera": "Nikon D7100"
       }
     ],
-    "astronomy": []
+    "astronomy": [
+      {
+        "id": "astr-001",
+        "title": "Final Rosette",
+        "file": "images/astronomy/Final_Rosette.jpg",
+        "thumb": "images/astronomy/Final_Rosette.jpg",
+        "tags": [
+          "astronomy"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "astr-002",
+        "title": "Img 2023",
+        "file": "images/astronomy/IMG_2023.JPG",
+        "thumb": "images/astronomy/IMG_2023.JPG",
+        "tags": [
+          "astronomy"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "astr-003",
+        "title": "Img 2024",
+        "file": "images/astronomy/IMG_2024.JPG",
+        "thumb": "images/astronomy/IMG_2024.JPG",
+        "tags": [
+          "astronomy"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "astr-004",
+        "title": "Img 2224",
+        "file": "images/astronomy/IMG_2224.JPG",
+        "thumb": "images/astronomy/IMG_2224.JPG",
+        "tags": [
+          "astronomy"
+        ],
+        "camera": "Nikon D7100"
+      },
+      {
+        "id": "astr-005",
+        "title": "Img 2333",
+        "file": "images/astronomy/IMG_2333.JPG",
+        "thumb": "images/astronomy/IMG_2333.JPG",
+        "tags": [
+          "astronomy"
+        ],
+        "camera": "Nikon D7100"
+      }
+    ]
   },
   "carMeets": [
     {
