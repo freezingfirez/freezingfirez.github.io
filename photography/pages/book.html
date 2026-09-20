@@ -74,10 +74,10 @@
             <label class="form-label" for="package">Package</label>
             <select class="form-select form-input" id="package" name="package" required>
               <option value="" disabled selected>Choose a package…</option>
-              <option value="Individual Athlete — $60">Individual Athlete — $60</option>
-              <option value="Multi-Athlete — $90">Multi-Athlete — $90</option>
-              <option value="Full Team — $150">Full Team — $150</option>
-              <option value="Full Team+ — $200">Full Team+ — $200</option>
+              <option value="Individual Athlete — $40">Individual Athlete — $40</option>
+              <option value="Multi-Athlete — $65">Multi-Athlete — $65</option>
+              <option value="Full Team — $100">Full Team — $100</option>
+              <option value="Full Team+ — $150">Full Team+ — $150</option>
               <option value="Not sure yet">Not sure yet</option>
             </select>
           </div>
@@ -134,7 +134,7 @@
         <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%;justify-content:center">
           Send Inquiry
         </button>
-        <p class="form-note">Submitting sends an inquiry only — it does not confirm a booking. I'll reply to confirm availability, and a 50% deposit reserves your date. See <a href="rates.html" style="color:var(--amber)">Rates &amp; Policy</a> for details.</p>
+        <p class="form-note">Submitting sends an inquiry only — it does not confirm a booking. I'll reply to confirm availability and next steps. See <a href="rates.html" style="color:var(--amber)">Rates &amp; Policy</a> for details.</p>
         <div id="form-status" style="margin-top:1rem;font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-align:center;display:none"></div>
       </form>
     </div>
@@ -154,10 +154,10 @@
 
   // Preselect the package from ?package=slug (linked from the Rates page).
   const PACKAGE_LABELS = {
-    'individual': 'Individual Athlete — $60',
-    'multi': 'Multi-Athlete — $90',
-    'full-team': 'Full Team — $150',
-    'full-team-plus': 'Full Team+ — $200',
+    'individual': 'Individual Athlete — $40',
+    'multi': 'Multi-Athlete — $65',
+    'full-team': 'Full Team — $100',
+    'full-team-plus': 'Full Team+ — $150',
   };
   const packageSelect = document.getElementById('package');
   const packageSlug = new URLSearchParams(window.location.search).get('package');
