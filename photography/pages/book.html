@@ -86,7 +86,19 @@
             <select class="form-select form-input" id="sport" name="sport" required>
               <option value="" disabled selected>Choose a sport…</option>
               <option value="Football">Football</option>
+              <option value="Basketball">Basketball</option>
+              <option value="Baseball">Baseball</option>
+              <option value="Softball">Softball</option>
+              <option value="Soccer">Soccer</option>
               <option value="Cross Country">Cross Country</option>
+              <option value="Track & Field">Track &amp; Field</option>
+              <option value="Wrestling">Wrestling</option>
+              <option value="Volleyball">Volleyball</option>
+              <option value="Lacrosse">Lacrosse</option>
+              <option value="Tennis">Tennis</option>
+              <option value="Golf">Golf</option>
+              <option value="Swimming">Swimming</option>
+              <option value="Cheerleading">Cheerleading</option>
               <option value="Other">Other</option>
             </select>
           </div>
@@ -166,18 +178,18 @@
   }
 
   // Athlete-specific fields only matter for individual/multi-athlete packages;
-  // jersey/position don't apply to cross country.
+  // jersey/position don't apply to sports without jersey numbers or positions.
   const athleteFields = document.getElementById('athlete-fields');
   const jerseyPositionFields = document.getElementById('jersey-position-fields');
   const sportSelect = document.getElementById('sport');
+  const NO_JERSEY_SPORTS = new Set(['Cross Country', 'Track & Field', 'Golf', 'Tennis', 'Swimming', 'Wrestling']);
 
   function updateConditionalFields() {
     const pkg = packageSelect.value;
     const isTeamPackage = pkg.startsWith('Full Team');
     athleteFields.hidden = isTeamPackage;
 
-    const isCrossCountry = sportSelect.value === 'Cross Country';
-    jerseyPositionFields.style.display = isCrossCountry ? 'none' : '';
+    jerseyPositionFields.style.display = NO_JERSEY_SPORTS.has(sportSelect.value) ? 'none' : '';
   }
   packageSelect.addEventListener('change', updateConditionalFields);
   sportSelect.addEventListener('change', updateConditionalFields);
