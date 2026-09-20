@@ -394,6 +394,106 @@
   },
   "wildlife": {
     "label": "Wildlife",
-    "photos": []
+    "photos": [
+      {
+        "id": "wildlife-001",
+        "title": "Dsc01687",
+        "file": "photos-web/wildlife/DSC01687.jpg",
+        "thumb": "photos-web/wildlife/DSC01687-thumb.jpg",
+        "w": 1620,
+        "h": 1080,
+        "featured": false
+      },
+      {
+        "id": "wildlife-002",
+        "title": "Dsc02187",
+        "file": "photos-web/wildlife/DSC02187.jpg",
+        "thumb": "photos-web/wildlife/DSC02187-thumb.jpg",
+        "w": 1620,
+        "h": 1080,
+        "featured": false
+      },
+      {
+        "id": "wildlife-003",
+        "title": "Dsc02212",
+        "file": "photos-web/wildlife/DSC02212.jpg",
+        "thumb": "photos-web/wildlife/DSC02212-thumb.jpg",
+        "w": 1620,
+        "h": 1080,
+        "featured": false
+      },
+      {
+        "id": "wildlife-004",
+        "title": "Dsc02244",
+        "file": "photos-web/wildlife/DSC02244.jpg",
+        "thumb": "photos-web/wildlife/DSC02244-thumb.jpg",
+        "w": 1620,
+        "h": 1080,
+        "featured": false
+      },
+      {
+        "id": "wildlife-005",
+        "title": "Dsc02342",
+        "file": "photos-web/wildlife/DSC02342.jpg",
+        "thumb": "photos-web/wildlife/DSC02342-thumb.jpg",
+        "w": 1620,
+        "h": 1080,
+        "featured": false
+      },
+      {
+        "id": "wildlife-006",
+        "title": "Dsc 5213",
+        "file": "photos-web/wildlife/DSC_5213.jpg",
+        "thumb": "photos-web/wildlife/DSC_5213-thumb.jpg",
+        "w": 1620,
+        "h": 1080,
+        "featured": false
+      },
+      {
+        "id": "wildlife-007",
+        "title": "Dsc 5225",
+        "file": "photos-web/wildlife/DSC_5225.jpg",
+        "thumb": "photos-web/wildlife/DSC_5225-thumb.jpg",
+        "w": 1620,
+        "h": 1080,
+        "featured": false
+      },
+      {
+        "id": "wildlife-008",
+        "title": "Dsc 5233",
+        "file": "photos-web/wildlife/DSC_5233.jpg",
+        "thumb": "photos-web/wildlife/DSC_5233-thumb.jpg",
+        "w": 1620,
+        "h": 1080,
+        "featured": false
+      },
+      {
+        "id": "wildlife-009",
+        "title": "Dsc 5698",
+        "file": "photos-web/wildlife/DSC_5698.jpg",
+        "thumb": "photos-web/wildlife/DSC_5698-thumb.jpg",
+        "w": 1620,
+        "h": 1080,
+        "featured": false
+      },
+      {
+        "id": "wildlife-010",
+        "title": "Dsc 5842",
+        "file": "photos-web/wildlife/DSC_5842.jpg",
+        "thumb": "photos-web/wildlife/DSC_5842-thumb.jpg",
+        "w": 1620,
+        "h": 1080,
+        "featured": false
+      },
+      {
+        "id": "wildlife-011",
+        "title": "Dsc 5948",
+        "file": "photos-web/wildlife/DSC_5948.jpg",
+        "thumb": "photos-web/wildlife/DSC_5948-thumb.jpg",
+        "w": 1620,
+        "h": 1080,
+        "featured": false
+      }
+    ]
   }
 }
