@@ -1,8 +1,8 @@
 /* ============================================================
-   NATHAN PHOTOGRAPHY — Core JS
+   NATHAN FISCHER PHOTOGRAPHY — Core JS
+   Shared across every page: nav, data loading, galleries, lightbox.
    ============================================================ */
 
-// ---- Global State ----
 const NP = {
   data: null,
   lightbox: { photos: [], index: 0 },
@@ -25,7 +25,7 @@ async function loadData() {
 }
 
 function getBasePath() {
-  // Works on both localhost and GitHub Pages subdirectory
+  // Works on both localhost and a GitHub Pages subdirectory.
   const scripts = document.querySelectorAll('script[src]');
   for (const s of scripts) {
     const m = s.src.match(/(.+\/)js\/core\.js/);
@@ -48,10 +48,36 @@ function photoFilePath(photo) {
   return photo.file || photo.thumb || '';
 }
 
-function meetCoverPath(meet) {
-  if (meet.coverImage) return meet.coverImage;
-  const first = meet.photos?.[0];
-  return first ? photoFilePath(first) : '';
+// Known sports get a sensible default display order; anything new (a folder
+// you create yourself, e.g. "basketball") just falls in after them, sorted
+// alphabetically — no code change required for it to appear correctly.
+const SPORT_PRIORITY = ['football', 'basketball', 'cross-country', 'track', 'baseball', 'soccer', 'wrestling', 'volleyball', 'lacrosse', 'tennis', 'golf'];
+
+function sortedSportCategories(data) {
+  return Object.entries(data.sports || {}).sort((a, b) => {
+    const ai = SPORT_PRIORITY.indexOf(a[0]);
+    const bi = SPORT_PRIORITY.indexOf(b[0]);
+    const av = ai === -1 ? 999 : ai;
+    const bv = bi === -1 ? 999 : bi;
+    if (av !== bv) return av - bv;
+    return a[1].label.localeCompare(b[1].label);
+  });
+}
+
+// Flatten every sports category into one array, tagged with its category slug.
+function allSportsPhotos(data) {
+  const out = [];
+  sortedSportCategories(data).forEach(([slug, cat]) => {
+    (cat.photos || []).forEach(p => out.push({ ...p, _cat: slug, _catLabel: cat.label }));
+  });
+  return out;
+}
+
+function featuredSportsPhotos(data, limit) {
+  const all = allSportsPhotos(data);
+  const featured = all.filter(p => p.featured);
+  const rest = all.filter(p => !p.featured);
+  return [...featured, ...rest].slice(0, limit);
 }
 
 // ============================================================
@@ -63,32 +89,31 @@ function initNav() {
   const mobileMenu = document.querySelector('.nav-mobile');
   const links = document.querySelectorAll('.nav-links a, .nav-mobile a');
 
-  // Active link
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   links.forEach(a => {
-    const href = a.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html') ||
-        (currentPage === 'index.html' && href === 'index.html')) {
+    const href = (a.getAttribute('href') || '').split('?')[0];
+    const hrefFile = href.split('/').pop();
+    if (hrefFile === currentPage || (currentPage === '' && hrefFile === 'index.html')) {
       a.classList.add('active');
     }
   });
 
-  // Scroll shadow
   window.addEventListener('scroll', () => {
     nav?.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  // Hamburger
   hamburger?.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
+    const open = hamburger.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
     mobileMenu?.classList.toggle('open');
+    document.body.style.overflow = open ? 'hidden' : '';
   });
 
-  // Close menu on link click
   mobileMenu?.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       hamburger?.classList.remove('open');
       mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
     });
   });
 }
@@ -115,23 +140,15 @@ function buildLightbox() {
       <div class="lightbox-img-wrap">
         <img class="lightbox-img" id="lb-img" src="" alt="">
       </div>
-      <div class="lightbox-meta" id="lb-meta"></div>
       <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous photo">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
       </button>
       <button class="lb-nav lb-next" id="lb-next" aria-label="Next photo">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
       </button>
-      <div class="lightbox-footer">
-        <a class="lightbox-download" id="lb-download" href="#" download>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-          Download
-        </a>
-      </div>
     </div>`;
   document.body.appendChild(lb);
 
-  // Events
   document.getElementById('lb-close').addEventListener('click', closeLightbox);
   document.getElementById('lb-prev').addEventListener('click', () => shiftLightbox(-1));
   document.getElementById('lb-next').addEventListener('click', () => shiftLightbox(1));
@@ -143,13 +160,12 @@ function buildLightbox() {
     if (e.key === 'ArrowRight') shiftLightbox(1);
   });
 
-  // Swipe support
   let startX = 0;
   lb.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
   lb.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - startX;
     if (Math.abs(dx) > 50) shiftLightbox(dx < 0 ? 1 : -1);
-  });
+  }, { passive: true });
 }
 
 function openLightbox(photos, index) {
@@ -178,20 +194,16 @@ function renderLightbox() {
 
   const img = document.getElementById('lb-img');
   img.style.opacity = '0';
-  const filePath = photoFilePath(photo);
-  img.src = imageUrl(filePath);
-  img.alt = photo.title || '';
-  img.onload = () => { img.style.opacity = '1'; img.style.transition = 'opacity 0.2s'; };
+  img.src = imageUrl(photoFilePath(photo));
+  img.alt = photo.title || 'Photo';
+  img.onload = () => { img.style.opacity = '1'; };
 
   document.getElementById('lb-title').textContent = photo.title || '';
   document.getElementById('lb-counter').textContent = `${index + 1} / ${photos.length}`;
-  document.getElementById('lb-meta').textContent = photo.settings || photo.camera || '';
-  const dl = document.getElementById('lb-download');
-  dl.href = imageUrl(filePath);
-  dl.download = (photo.title || 'photo').replace(/\s+/g, '-').toLowerCase() + '.jpg';
 
-  document.getElementById('lb-prev').style.display = photos.length <= 1 ? 'none' : '';
-  document.getElementById('lb-next').style.display = photos.length <= 1 ? 'none' : '';
+  const showNav = photos.length > 1;
+  document.getElementById('lb-prev').style.display = showNav ? '' : 'none';
+  document.getElementById('lb-next').style.display = showNav ? '' : 'none';
 }
 
 // ============================================================
@@ -210,88 +222,94 @@ function initLazyLoad() {
       if (!entry.isIntersecting) return;
       const img = entry.target;
       img.src = img.dataset.src;
-      img.classList.add('loaded');
+      img.addEventListener('load', () => img.classList.add('loaded'), { once: true });
       obs.unobserve(img);
     });
-  }, { rootMargin: '200px' });
+  }, { rootMargin: '250px' });
 
-  document.querySelectorAll('img.lazy').forEach(img => observer.observe(img));
+  document.querySelectorAll('img.lazy:not(.loaded)').forEach(img => observer.observe(img));
 }
 
 // ============================================================
-// PHOTO CARD BUILDER
+// PHOTO CARD + GALLERY GRID
 // ============================================================
-function createPhotoCard(photo, allPhotos, index, options = {}) {
-  const card = document.createElement('div');
+function createPhotoCard(photo, allPhotos, index) {
+  const card = document.createElement('button');
+  card.type = 'button';
   card.className = 'photo-card';
-  if (options.listitem) card.setAttribute('role', 'listitem');
-
-  const thumb = imageUrl(photoThumbPath(photo));
-  const file = imageUrl(photoFilePath(photo));
+  card.setAttribute('aria-label', `Open photo: ${photo.title || 'untitled'}`);
+  if (photo.w && photo.h) card.style.setProperty('--ar', `${photo.w} / ${photo.h}`);
 
   const img = document.createElement('img');
   img.className = 'photo-img lazy';
-  img.dataset.src = thumb;
-  img.alt = photo.title || '';
+  img.dataset.src = imageUrl(photoThumbPath(photo));
+  img.alt = photo.title || 'Sports and wildlife photography';
+  img.loading = 'lazy';
+  img.decoding = 'async';
 
   const overlay = document.createElement('div');
   overlay.className = 'photo-overlay';
-  overlay.innerHTML = `
-    <div class="photo-meta">
-      <div class="photo-title">${photo.title || ''}</div>
-      ${photo.settings ? `<div class="photo-detail">${photo.settings}</div>` : ''}
-    </div>`;
+  if (photo._catLabel) {
+    overlay.innerHTML = `<span class="photo-tag">${photo._catLabel}</span>`;
+  }
 
-  const actions = document.createElement('div');
-  actions.className = 'photo-actions';
-  const dlBtn = document.createElement('button');
-  dlBtn.className = 'btn-icon';
-  dlBtn.title = 'Download';
-  dlBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`;
-  dlBtn.addEventListener('click', e => downloadPhoto(e, file, photo.title || 'photo'));
-  actions.appendChild(dlBtn);
-
-  card.append(img, overlay, actions);
-  card.addEventListener('click', e => {
-    if (e.target.closest('.photo-actions')) return;
-    openLightbox(allPhotos, index);
-  });
+  card.append(img, overlay);
+  card.addEventListener('click', () => openLightbox(allPhotos, index));
   return card;
 }
 
-function downloadAllPhotos(photos, delayMs = 300) {
+/**
+ * Renders a masonry-style photo grid into `container`.
+ * `photos` is an array of gallery photo objects (as stored in galleries.json,
+ * optionally with _cat / _catLabel added for filtering).
+ */
+function renderGallery(container, photos, emptyMessage) {
+  if (!container) return;
+  container.innerHTML = '';
+
+  if (!photos.length) {
+    const empty = document.createElement('div');
+    empty.className = 'empty-state';
+    empty.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <h3>More coming soon</h3>
+      <p>${emptyMessage || 'New photos are added regularly — check back soon.'}</p>`;
+    container.appendChild(empty);
+    return;
+  }
+
   photos.forEach((photo, i) => {
-    setTimeout(() => {
-      downloadPhoto(
-        { stopPropagation: () => {} },
-        imageUrl(photoFilePath(photo)),
-        photo.title || `photo-${i + 1}`
-      );
-    }, i * delayMs);
+    const wrapper = document.createElement('div');
+    wrapper.className = 'masonry-item';
+    if (photo._cat) wrapper.dataset.filter = photo._cat;
+    wrapper.appendChild(createPhotoCard(photo, photos, i));
+    container.appendChild(wrapper);
+  });
+
+  initLazyLoad();
+}
+
+// ============================================================
+// FILTER TABS (category pills, e.g. on the Sports page)
+// ============================================================
+function initFilterTabs(tabsContainer, gridContainer, onChange) {
+  if (!tabsContainer) return;
+  tabsContainer.addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    tabsContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.category;
+    gridContainer?.querySelectorAll('.masonry-item').forEach(item => {
+      const show = filter === 'all' || item.dataset.filter === filter;
+      item.style.display = show ? '' : 'none';
+    });
+    onChange?.(filter);
   });
 }
 
-/** @deprecated use createPhotoCard */
-function buildPhotoCard(photo, photos, index, basePath) {
-  return createPhotoCard(photo, photos, index);
-}
-
 // ============================================================
-// DOWNLOAD
-// ============================================================
-function downloadPhoto(e, url, title) {
-  e.stopPropagation();
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = title.replace(/\s+/g, '-').toLowerCase() + '.jpg';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  showToast('Downloading…');
-}
-
-// ============================================================
-// TOAST
+// TOAST (used by the booking form)
 // ============================================================
 function showToast(msg) {
   let container = document.querySelector('.toast-container');
@@ -305,50 +323,6 @@ function showToast(msg) {
   toast.textContent = msg;
   container.appendChild(toast);
   setTimeout(() => toast.remove(), 3100);
-}
-
-// ============================================================
-// FILTER + SEARCH
-// ============================================================
-function initFilters(containerSelector, cards, getCategory) {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
-
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const searchInput = document.querySelector('.search-input');
-
-  let activeFilter = 'all';
-  let searchTerm = '';
-
-  function applyFilters() {
-    const items = container.querySelectorAll('[data-filter]');
-    let visibleCount = 0;
-    items.forEach(item => {
-      const cat = item.dataset.filter || '';
-      const title = (item.dataset.title || '').toLowerCase();
-      const matchFilter = activeFilter === 'all' || cat === activeFilter;
-      const matchSearch = !searchTerm || title.includes(searchTerm);
-      const show = matchFilter && matchSearch;
-      item.style.display = show ? '' : 'none';
-      if (show) visibleCount++;
-    });
-    const empty = container.querySelector('.empty-state');
-    if (empty) empty.style.display = visibleCount === 0 ? 'block' : 'none';
-  }
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeFilter = btn.dataset.category;
-      applyFilters();
-    });
-  });
-
-  searchInput?.addEventListener('input', e => {
-    searchTerm = e.target.value.toLowerCase().trim();
-    applyFilters();
-  });
 }
 
 // ============================================================

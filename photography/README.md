@@ -1,234 +1,174 @@
 # Nathan Fischer Photography — Site Guide
 
-Everything you need to add photos, create galleries, and deploy to GitHub Pages.
+Sports + wildlife photography site with rates and a booking inquiry form.
+
+---
+
+## Adding Photos — the whole workflow
+
+**This is the only thing you need to know for day-to-day use.**
+
+1. Drop your JPGs into the right folder in Finder:
+   - `photography/photos/sports/football/`
+   - `photography/photos/sports/cross-country/`
+   - `photography/photos/wildlife/`
+2. Run one command from the repo root:
+   ```bash
+   python3 photography/scripts/sync_photos.py
+   ```
+3. Commit and push:
+   ```bash
+   git add photography/photos photography/photos-web photography/data/galleries.json
+   git commit -m "Add photos"
+   git push
+   ```
+
+That's it. The sync script finds every photo in those folders, generates a
+compressed web-sized copy and a thumbnail for each one, and rewrites
+`photography/data/galleries.json` — the site reads that file and displays
+the photos automatically. **You never touch HTML, CSS, or JS to add a
+photo.**
+
+Your original full-resolution files are never modified, renamed, or
+deleted — the script only reads them and writes optimized copies into
+`photography/photos-web/`.
+
+---
+
+## Creating a New Sports Category (e.g. Basketball)
+
+1. Create a folder: `photography/photos/sports/basketball/`
+2. Drop photos into it.
+3. Run `python3 photography/scripts/sync_photos.py`.
+
+The Sports page automatically grows a new "Basketball" filter tab — no
+code changes. (Common sports — football, basketball, cross country,
+track, baseball, soccer, wrestling, volleyball, lacrosse, tennis, golf —
+get a sensible display order automatically; anything else just appears
+after them.)
+
+---
+
+## Optional: Featuring, Captions, Ordering, Hiding a Photo
+
+Normal photos need **zero** metadata — they just show up. If you want to
+fine-tune something, create (or edit) a `meta.json` file in that same
+folder, keyed by filename:
+
+```json
+{
+  "DSC06862.jpg": { "featured": true, "order": 1, "caption": "Friday night lights" },
+  "DSC06900.jpg": { "hidden": true }
+}
+```
+
+- `featured` — shows this photo first and makes it eligible for the
+  homepage hero / featured sections. The football hero photo works this
+  way (see `photography/photos/sports/football/meta.json`).
+- `order` — a number; lower shows first. Photos without `order` keep
+  their normal (filename) order, after any explicitly ordered ones.
+- `caption` — overrides the auto-generated title (used as the lightbox
+  caption and image `alt` text).
+- `hidden` — set `true` to pull a photo out of the site without deleting
+  the file.
+
+Run the sync script again after editing `meta.json`.
+
+### Changing the homepage hero photo
+
+By default the hero is the first `featured: true` photo found (football
+is checked first). To force a specific photo, add a `meta.json` directly
+in `photography/photos/`:
+
+```json
+{ "hero": "sports/football/DSC06862.jpg" }
+```
+
+---
+
+## Changing Prices or Package Details
+
+Open `photography/pages/rates.html` and edit the text directly — each
+package is a `.rate-card` block with a price and a bulleted list. No
+other file needs to change. The "Book This Package" buttons link to
+`book.html?package=<slug>`; if you rename a package, keep the `slug` in
+that link matching the option value in `photography/pages/book.html`'s
+`PACKAGE_LABELS` script block, or the pre-selection won't match.
 
 ---
 
 ## File Structure
 
 ```
-nathan-photography/
-├── index.html                    ← Home page
+photography/
+├── index.html                  ← Home page
 ├── pages/
-│   ├── portfolio.html            ← Portfolio (Automotive / Astronomy / Real Estate)
-│   ├── car-meets.html            ← Car meet gallery index + detail view
-│   ├── about.html                ← About page
-│   ├── contact.html              ← Contact form
-│   └── clients.html              ← Private client galleries
-├── css/
-│   └── style.css                 ← All styles (edit theme vars at the top)
-├── js/
-│   └── core.js                   ← Lightbox, lazy load, filters, nav
-├── data/
-│   └── galleries.json            ← ★ THE ONLY FILE YOU EDIT TO ADD PHOTOS ★
-└── images/
-    ├── automotive/               ← Your automotive portfolio shots
-    ├── astronomy/                ← Your astronomy portfolio shots
-    ├── real-estate/              ← Your real estate portfolio shots
-    ├── car-meets/
-    │   ├── meet-001/             ← One folder per meet
-    │   │   ├── cover.jpg
-    │   │   ├── 01.jpg
-    │   │   └── ...
-    │   └── meet-002/
-    └── clients/
-        └── smith-wedding/        ← One folder per client
-            ├── cover.jpg
-            └── 01.jpg
+│   ├── sports.html             ← Sports gallery (all categories, filterable)
+│   ├── wildlife.html           ← Wildlife portfolio gallery
+│   ├── rates.html              ← Packages + booking policy
+│   ├── book.html               ← Booking inquiry form
+│   └── about.html              ← About page
+├── css/style.css               ← All styles (theme vars at the top)
+├── js/core.js                  ← Nav, lightbox, lazy load, galleries
+├── data/galleries.json         ← Auto-generated — don't hand-edit
+├── photos/                     ← Your full-quality ORIGINALS (drop files here)
+│   ├── sports/
+│   │   ├── football/
+│   │   │   └── meta.json       ← optional: featured/caption/order/hidden
+│   │   └── cross-country/
+│   └── wildlife/
+├── photos-web/                 ← Auto-generated optimized copies (served to visitors)
+└── scripts/
+    ├── sync_photos.py          ← Run this after adding photos
+    └── copy_photos.sh          ← Optional CLI helper (Finder drag-and-drop works fine too)
 ```
 
 ---
 
-## Adding Photos to the Portfolio
+## The Booking Form
 
-1. Drop your photos into the right folder:
-   - Automotive → `images/automotive/`
-   - Astronomy → `images/astronomy/`
-   - Real Estate → `images/real-estate/`
+`pages/book.html` submits to Formspree (the same form already wired up
+on this site: `https://formspree.io/f/mojzozal`), so it works on GitHub
+Pages with no backend and no exposed secrets. Submitting only sends an
+inquiry — the page explicitly tells the visitor it is not a confirmed
+booking.
 
-2. Open `data/galleries.json` and add an entry to the right array:
+Every submission includes a `form_type: Booking Inquiry` field so it's
+easy to tell apart from anything else that hits the same inbox. If you'd
+rather booking inquiries land in a separate Formspree form (own limits,
+own inbox rules), create a second form at formspree.io and swap the
+`action` URL in `book.html`.
 
-```json
-{
-  "id": "auto-007",
-  "title": "Blue Ridge Roll",
-  "description": "Rolling shot on Highway 11 at golden hour.",
-  "file": "images/automotive/blue-ridge-roll.jpg",
-  "thumb": "images/automotive/blue-ridge-roll.jpg",
-  "tags": ["automotive", "rolling", "golden-hour"],
-  "camera": "Nikon D7100",
-  "settings": "f/8 · 1/500s · ISO 100",
-  "date": "2024-05-20"
-}
-```
+**Formspree free tier is capped at 50 submissions/month** — keep an eye
+on that once the site is getting real traffic.
 
-That's it. The photo will appear in the portfolio with the filter, lightbox, and download button automatically.
-
-**Tip:** Use the same file for `file` and `thumb` unless you make a separate lower-res thumbnail version.
+Package pre-selection: linking to `book.html?package=individual` (or
+`multi`, `full-team`, `full-team-plus`) pre-selects that package in the
+form — this is how the "Book This Package" buttons on the Rates page
+work.
 
 ---
 
-## Adding a New Car Meet Gallery
+## Performance
 
-1. Create a folder: `images/car-meets/meet-004/`
-2. Add a `cover.jpg` and numbered photos: `01.jpg`, `02.jpg`, etc.
-3. Add to `data/galleries.json` under `"carMeets"`:
-
-```json
-{
-  "id": "meet-004",
-  "name": "Greenville Cars & Coffee",
-  "date": "May 2024",
-  "location": "Greenville, SC",
-  "description": "May sunrise meet — heavy turnout of European iron.",
-  "coverImage": "images/car-meets/meet-004/cover.jpg",
-  "tag": "Monthly",
-  "photos": [
-    {
-      "id": "m4-001",
-      "title": "Morning Fog",
-      "file": "images/car-meets/meet-004/01.jpg",
-      "settings": "f/4 · 1/400s · ISO 200"
-    },
-    {
-      "id": "m4-002",
-      "title": "Detail",
-      "file": "images/car-meets/meet-004/02.jpg",
-      "settings": "f/5.6 · 1/800s · ISO 100"
-    }
-  ]
-}
-```
-
-Available `tag` values (used for filtering): `Monthly`, `Import`, `Classic`
-Add your own — just add a matching filter button in `car-meets.html`.
-
----
-
-## Adding a Client Gallery
-
-Client galleries are password-protected. The password system is frontend-only (stored in JSON) — fine for early work, but don't use for highly sensitive images.
-
-1. Create a folder: `images/clients/your-client-name/`
-2. Add their photos as `01.jpg`, `02.jpg`, etc.
-3. Add to `data/galleries.json` under `"clients"`:
-
-```json
-{
-  "id": "client-jones-car",
-  "name": "Jones – Mustang GT",
-  "password": "jones2024",
-  "coverImage": "images/clients/jones-car/cover.jpg",
-  "description": "Private gallery — Jones family Mustang shoot.",
-  "expires": null,
-  "photos": [
-    {
-      "id": "jc-001",
-      "title": "Front Three-Quarter",
-      "file": "images/clients/jones-car/01.jpg"
-    },
-    {
-      "id": "jc-002",
-      "title": "Detail",
-      "file": "images/clients/jones-car/02.jpg"
-    }
-  ]
-}
-```
-
-Give the client their password verbally or via DM — never in email if you can help it.
-
-**To change a password:** Edit the `"password"` value in `galleries.json` and push.
-
----
-
-## Setting Up the Contact Form
-
-The form uses [Formspree](https://formspree.io) (free tier: 50 submissions/month).
-
-1. Go to https://formspree.io and sign up with your email
-2. Create a new form — you'll get an endpoint like `https://formspree.io/f/abcdefgh`
-3. In `pages/contact.html`, find this line:
-   ```html
-   <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-   ```
-4. Replace `YOUR_FORM_ID` with your actual form ID
-
-Submissions will go to your email automatically.
-
----
-
-## Replacing Placeholder Images
-
-The site uses Unsplash placeholder images right now. Replace them by:
-
-1. Adding your real photos to the `images/` folders
-2. Updating the paths in `data/galleries.json`
-
-For the hero image, find this line in `index.html`:
-```html
-<img class="hero-image" src="https://images.unsplash.com/..." alt="Hero">
-```
-Replace the `src` with your own best shot.
-
-For the about page portrait, find in `pages/about.html`:
-```html
-<img class="about-img" src="https://images.unsplash.com/..." alt="Nathan Fischer">
-```
-
----
-
-## Customizing Your Info
-
-- **Email**: Search for `nathan@nathanfischer.photography` in `pages/contact.html` and replace
-- **Instagram/social links**: Find the `<a href="https://instagram.com"` links in `contact.html` and `about.html`
-- **Gear list**: Edit the `.gear-item` blocks in `pages/about.html`
-- **Bio text**: The `<div class="about-body">` section in `pages/about.html`
-
----
-
-## Deploying to GitHub Pages
-
-### First time
-
-1. Create a new repo on GitHub (e.g. `nathanfischer-photography` or just `photography`)
-2. Push your files:
-   ```bash
-   cd nathan-photography
-   git init
-   git add .
-   git commit -m "Initial site"
-   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
-   git push -u origin main
-   ```
-3. On GitHub: **Settings → Pages → Source → Deploy from branch → main / root**
-4. Your site will be at: `https://YOUR_USERNAME.github.io/YOUR_REPO/`
-
-### Updating the site
-
-```bash
-git add .
-git commit -m "Add March car meet photos"
-git push
-```
-
-GitHub Pages rebuilds in about 60 seconds.
-
-### Custom domain (optional)
-
-1. In your domain registrar, add a CNAME record pointing to `YOUR_USERNAME.github.io`
-2. In repo Settings → Pages → Custom domain, enter your domain
-3. Check "Enforce HTTPS"
+- Every photo gets two web-optimized derivatives (a ~2000px "full" for
+  the lightbox, a ~900px thumbnail for grids), both compressed
+  progressive JPEGs — originals are untouched.
+- Images lazy-load as you scroll (`IntersectionObserver`), and each
+  photo card reserves its real aspect ratio so nothing jumps around
+  while loading.
+- No build step, no framework, no dependencies — plain HTML/CSS/JS, so
+  there's nothing to compile and nothing to break.
 
 ---
 
 ## Customizing the Theme
 
-All colors, fonts, and spacing are in `css/style.css` at the top under `:root {}`.
+Colors, fonts, and spacing are in `css/style.css` under `:root {}`:
 
 ```css
 :root {
-  --amber:    #E8A020;   ← Main accent color — change this to change the whole vibe
+  --amber:    #E8A020;   ← Accent color
   --black:    #0A0A0A;   ← Page background
   --surface:  #111113;   ← Card backgrounds
   --white:    #F0EDE8;   ← Main text color
@@ -237,35 +177,14 @@ All colors, fonts, and spacing are in `css/style.css` at the top under `:root {}
 
 ---
 
-## Performance Tips
+## Deploying
 
-- **Resize photos before uploading.** Aim for 1600px wide max for portfolio shots, 800px for thumbnails. Use Lightroom export or [Squoosh](https://squoosh.app).
-- The site uses **lazy loading** — photos only load as you scroll, so large galleries stay fast.
-- For car meets with 100+ photos, consider splitting into multiple meet entries.
+This repo is already a GitHub Pages user site
+(`freezingfirez.github.io`). Push to `main` and it's live in about a
+minute:
 
----
-
-## Adding New Filter Categories
-
-In `pages/portfolio.html`, find the filter bar and add a button:
-```html
-<button class="filter-btn" data-category="wildlife">Wildlife</button>
+```bash
+git add -A
+git commit -m "Update site"
+git push
 ```
-
-In `data/galleries.json`, add your photos with the matching tag:
-```json
-{ "id": "wild-001", "title": "Red-Tailed Hawk", ..., "tags": ["wildlife"] }
-```
-
-The portfolio page assigns `data-filter` from the category — it'll just work.
-
----
-
-## Questions / Future Ideas
-
-- **Add a wildlife category**: Copy the astronomy pattern in `galleries.json`, add a filter button
-- **Print store**: Link to [Printful](https://printful.com) or [Darkroom](https://darkroom.tech) from individual photos
-- **SEO**: Add `<meta>` descriptions to each page (already started — just fill in your real content)
-- **Analytics**: Add Plausible or GoatCounter (privacy-friendly) with one script tag
-
-Built with pure HTML, CSS, and JavaScript — no build tools, no dependencies, no complexity.

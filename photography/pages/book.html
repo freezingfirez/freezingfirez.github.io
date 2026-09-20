@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Shoot | Nathan Fischer Photography</title>
+  <meta name="description" content="Request a sports or wildlife photography booking with Nathan Fischer, based in Greenville, South Carolina.">
+  <link rel="canonical" href="https://freezingfirez.github.io/photography/pages/book.html">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><polygon points='18,0 36,9 36,27 18,36 0,27 0,9' fill='%23E8A020'/><text x='18' y='24' text-anchor='middle' font-size='16' font-family='sans-serif' fill='%230A0A0A' font-weight='bold'>N</text></svg>">
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="../index.html" class="nav-logo" aria-label="Nathan Fischer Photography Home">
+    <div class="nav-logo-mark"><span>N</span></div>
+    <div class="nav-logo-text">
+      <span class="name">Nathan Fischer</span>
+      <span class="tagline">Sports + Wildlife</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="sports.html">Sports</a>
+    <a href="wildlife.html">Wildlife</a>
+    <a href="rates.html">Rates</a>
+    <a href="about.html">About</a>
+    <a href="book.html" class="nav-cta">Book</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" role="menu">
+  <a href="../index.html">Home</a>
+  <a href="sports.html">Sports</a>
+  <a href="wildlife.html">Wildlife</a>
+  <a href="rates.html">Rates</a>
+  <a href="about.html">About</a>
+  <a href="book.html" class="nav-cta">Book</a>
+</div>
+
+<div class="page">
+  <section class="section" style="max-width:760px;margin:0 auto">
+    <div class="section-header">
+      <div class="section-eyebrow">Let's Talk</div>
+      <h1 class="section-title">BOOK A SHOOT</h1>
+      <p class="section-sub">This is a booking inquiry, not an instant reservation. I'll follow up to confirm availability and details.</p>
+    </div>
+
+    <div class="contact-form">
+      <form id="booking-form" action="https://formspree.io/f/mojzozal" method="POST" novalidate>
+        <input type="hidden" name="form_type" value="Booking Inquiry">
+        <input type="hidden" name="_subject" value="New Booking Inquiry">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="contact-pref">Instagram / Preferred Contact</label>
+          <input class="form-input" type="text" id="contact-pref" name="contact_preference" placeholder="@yourhandle, or a phone number">
+        </div>
+
+        <div class="form-section-label">Package</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="package">Package</label>
+            <select class="form-select form-input" id="package" name="package" required>
+              <option value="" disabled selected>Choose a package…</option>
+              <option value="Individual Athlete — $60">Individual Athlete — $60</option>
+              <option value="Multi-Athlete — $90">Multi-Athlete — $90</option>
+              <option value="Full Team — $150">Full Team — $150</option>
+              <option value="Full Team+ — $200">Full Team+ — $200</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sport">Sport</label>
+            <select class="form-select form-input" id="sport" name="sport" required>
+              <option value="" disabled selected>Choose a sport…</option>
+              <option value="Football">Football</option>
+              <option value="Cross Country">Cross Country</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section-label">Event Details</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="team">Team</label>
+            <input class="form-input" type="text" id="team" name="team" placeholder="e.g. Travelers Rest High School">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="event-date">Event Date</label>
+            <input class="form-input" type="date" id="event-date" name="event_date">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="location">Location / Venue</label>
+          <input class="form-input" type="text" id="location" name="location" placeholder="Stadium, field, or address">
+        </div>
+
+        <div id="athlete-fields">
+          <div class="form-section-label">Athlete Details</div>
+          <div class="form-group">
+            <label class="form-label" for="athlete-name">Athlete Name</label>
+            <input class="form-input" type="text" id="athlete-name" name="athlete_name" placeholder="If this shoot is focused on one or a few athletes">
+          </div>
+          <div class="form-row" id="jersey-position-fields">
+            <div class="form-group">
+              <label class="form-label" for="jersey">Jersey Number</label>
+              <input class="form-input" type="text" id="jersey" name="jersey_number" inputmode="numeric" placeholder="e.g. 24">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="position">Position</label>
+              <input class="form-input" type="text" id="position" name="position" placeholder="e.g. Wide Receiver">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="details">Additional Details</label>
+          <textarea class="form-textarea" id="details" name="additional_details" placeholder="Anything else I should know — number of athletes, specific moments you want captured, etc."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%;justify-content:center">
+          Send Inquiry
+        </button>
+        <p class="form-note">Submitting sends an inquiry only — it does not confirm a booking. I'll reply to confirm availability, and a 50% deposit reserves your date. See <a href="rates.html" style="color:var(--amber)">Rates &amp; Policy</a> for details.</p>
+        <div id="form-status" style="margin-top:1rem;font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-align:center;display:none"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <span class="footer-copy">© <span id="year"></span> Nathan Fischer · Greenville, SC</span>
+      <a href="../index.html" class="footer-copy" style="color:var(--amber)">← Back to Home</a>
+    </div>
+  </footer>
+</div>
+
+<script src="../js/core.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Preselect the package from ?package=slug (linked from the Rates page).
+  const PACKAGE_LABELS = {
+    'individual': 'Individual Athlete — $60',
+    'multi': 'Multi-Athlete — $90',
+    'full-team': 'Full Team — $150',
+    'full-team-plus': 'Full Team+ — $200',
+  };
+  const packageSelect = document.getElementById('package');
+  const packageSlug = new URLSearchParams(window.location.search).get('package');
+  if (packageSlug && PACKAGE_LABELS[packageSlug]) {
+    packageSelect.value = PACKAGE_LABELS[packageSlug];
+  }
+
+  // Athlete-specific fields only matter for individual/multi-athlete packages;
+  // jersey/position don't apply to cross country.
+  const athleteFields = document.getElementById('athlete-fields');
+  const jerseyPositionFields = document.getElementById('jersey-position-fields');
+  const sportSelect = document.getElementById('sport');
+
+  function updateConditionalFields() {
+    const pkg = packageSelect.value;
+    const isTeamPackage = pkg.startsWith('Full Team');
+    athleteFields.hidden = isTeamPackage;
+
+    const isCrossCountry = sportSelect.value === 'Cross Country';
+    jerseyPositionFields.style.display = isCrossCountry ? 'none' : '';
+  }
+  packageSelect.addEventListener('change', updateConditionalFields);
+  sportSelect.addEventListener('change', updateConditionalFields);
+  updateConditionalFields();
+
+  // Submit via Formspree — this is an inquiry, never a confirmed booking.
+  const form = document.getElementById('booking-form');
+  const status = document.getElementById('form-status');
+  const btn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        status.style.display = 'block';
+        status.style.color = 'var(--amber)';
+        status.textContent = 'Inquiry received! I\'ll follow up within a couple of days to confirm availability — this isn\'t a confirmed booking yet.';
+        form.reset();
+        updateConditionalFields();
+      } else {
+        throw new Error('Network error');
+      }
+    } catch {
+      status.style.display = 'block';
+      status.style.color = 'var(--red-alert)';
+      status.textContent = 'Something went wrong — try emailing nathan@fischdesigns.com directly.';
+    } finally {
+      btn.textContent = 'Send Inquiry';
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

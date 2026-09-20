@@ -1,442 +1,399 @@
 {
   "site": {
-    "portrait": "images/about/portrait.jpg"
+    "hero": "photos-web/sports/football/DSC06862.jpg"
   },
-  "portfolio": {
-    "automotive": [
-      {
-        "id": "auto-001",
-        "title": "Dsc 2164",
-        "file": "images/automotive/DSC_2164.jpg",
-        "thumb": "images/automotive/DSC_2164.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      },
-      {
-        "id": "auto-002",
-        "title": "Dsc 2167",
-        "file": "images/automotive/DSC_2167.jpg",
-        "thumb": "images/automotive/DSC_2167.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      },
-      {
-        "id": "auto-003",
-        "title": "Dsc 2199",
-        "file": "images/automotive/DSC_2199.jpg",
-        "thumb": "images/automotive/DSC_2199.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      },
-      {
-        "id": "auto-004",
-        "title": "Dsc 2726",
-        "file": "images/automotive/DSC_2726.jpg",
-        "thumb": "images/automotive/DSC_2726.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      },
-      {
-        "id": "auto-005",
-        "title": "Dsc 2749",
-        "file": "images/automotive/DSC_2749.jpg",
-        "thumb": "images/automotive/DSC_2749.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      },
-      {
-        "id": "auto-006",
-        "title": "Dsc 3945",
-        "file": "images/automotive/DSC_3945.jpg",
-        "thumb": "images/automotive/DSC_3945.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      },
-      {
-        "id": "auto-007",
-        "title": "Dsc 3958",
-        "file": "images/automotive/DSC_3958.jpg",
-        "thumb": "images/automotive/DSC_3958.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      },
-      {
-        "id": "auto-008",
-        "title": "Dsc 3978",
-        "file": "images/automotive/DSC_3978.jpg",
-        "thumb": "images/automotive/DSC_3978.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      },
-      {
-        "id": "auto-009",
-        "title": "Dsc 3991",
-        "file": "images/automotive/DSC_3991.jpg",
-        "thumb": "images/automotive/DSC_3991.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      },
-      {
-        "id": "auto-010",
-        "title": "Dsc 4014",
-        "file": "images/automotive/DSC_4014.jpg",
-        "thumb": "images/automotive/DSC_4014.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      },
-      {
-        "id": "auto-011",
-        "title": "Dsc 4033 2",
-        "file": "images/automotive/DSC_4033-2.jpg",
-        "thumb": "images/automotive/DSC_4033-2.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      },
-      {
-        "id": "auto-012",
-        "title": "Dsc 4124",
-        "file": "images/automotive/dsc-4124.jpg",
-        "thumb": "images/automotive/dsc-4124.jpg",
-        "tags": [
-          "automotive"
-        ],
-        "camera": "Nikon D7100"
-      }
-    ],
-    "astronomy": [
-      {
-        "id": "astr-001",
-        "title": "Final Rosette",
-        "file": "images/astronomy/Final_Rosette.jpg",
-        "thumb": "images/astronomy/Final_Rosette.jpg",
-        "tags": [
-          "astronomy"
-        ],
-        "camera": "Seestar S50"
-      },
-      {
-        "id": "astr-002",
-        "title": "Img 2023",
-        "file": "images/astronomy/IMG_2023.JPG",
-        "thumb": "images/astronomy/IMG_2023.JPG",
-        "tags": [
-          "astronomy"
-        ],
-        "camera": "Seestar S50"
-      },
-      {
-        "id": "astr-003",
-        "title": "Img 2024",
-        "file": "images/astronomy/IMG_2024.JPG",
-        "thumb": "images/astronomy/IMG_2024.JPG",
-        "tags": [
-          "astronomy"
-        ],
-        "camera": "Seestar S50"
-      },
-      {
-        "id": "astr-004",
-        "title": "Img 2224",
-        "file": "images/astronomy/IMG_2224.JPG",
-        "thumb": "images/astronomy/IMG_2224.JPG",
-        "tags": [
-          "astronomy"
-        ],
-        "camera": "Seestar S50"
-      },
-      {
-        "id": "astr-005",
-        "title": "Img 2333",
-        "file": "images/astronomy/IMG_2333.JPG",
-        "thumb": "images/astronomy/IMG_2333.JPG",
-        "tags": [
-          "astronomy"
-        ],
-        "camera": "Seestar S50"
-      }
-    ]
-  },
-  "carMeets": [
-    {
-      "id": "meet-car-meet-1",
-      "name": "Car Meet 1",
-      "date": "",
-      "location": "",
-      "description": "",
-      "coverImage": "images/car-meets/car-meet-1/DSC_2581.jpg",
-      "tag": "Monthly",
+  "sports": {
+    "cross-country": {
+      "label": "Cross Country",
       "photos": [
         {
-          "id": "meet-car-meet-1-001",
-          "title": "Dsc 2581",
-          "file": "images/car-meets/car-meet-1/DSC_2581.jpg"
+          "id": "cross-country-001",
+          "title": "Dsc03169",
+          "file": "photos-web/sports/cross-country/DSC03169.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC03169-thumb.jpg",
+          "w": 2000,
+          "h": 1334,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-002",
-          "title": "Dsc 2582",
-          "file": "images/car-meets/car-meet-1/DSC_2582.jpg"
+          "id": "cross-country-002",
+          "title": "Dsc03265",
+          "file": "photos-web/sports/cross-country/DSC03265.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC03265-thumb.jpg",
+          "w": 2000,
+          "h": 1334,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-003",
-          "title": "Dsc 2586",
-          "file": "images/car-meets/car-meet-1/DSC_2586.jpg"
+          "id": "cross-country-003",
+          "title": "Dsc03270",
+          "file": "photos-web/sports/cross-country/DSC03270.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC03270-thumb.jpg",
+          "w": 2000,
+          "h": 1334,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-004",
-          "title": "Dsc 2589",
-          "file": "images/car-meets/car-meet-1/DSC_2589.jpg"
+          "id": "cross-country-004",
+          "title": "Dsc03306",
+          "file": "photos-web/sports/cross-country/DSC03306.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC03306-thumb.jpg",
+          "w": 2000,
+          "h": 1334,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-005",
-          "title": "Dsc 2591",
-          "file": "images/car-meets/car-meet-1/DSC_2591.jpg"
+          "id": "cross-country-005",
+          "title": "Dsc03334",
+          "file": "photos-web/sports/cross-country/DSC03334.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC03334-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-006",
-          "title": "Dsc 2596",
-          "file": "images/car-meets/car-meet-1/DSC_2596.jpg"
+          "id": "cross-country-006",
+          "title": "Dsc03439",
+          "file": "photos-web/sports/cross-country/DSC03439.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC03439-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-007",
-          "title": "Dsc 2625",
-          "file": "images/car-meets/car-meet-1/DSC_2625.jpg"
+          "id": "cross-country-007",
+          "title": "Dsc03566",
+          "file": "photos-web/sports/cross-country/DSC03566.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC03566-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-008",
-          "title": "Dsc 2643",
-          "file": "images/car-meets/car-meet-1/DSC_2643.jpg"
+          "id": "cross-country-008",
+          "title": "Dsc03605",
+          "file": "photos-web/sports/cross-country/DSC03605.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC03605-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-009",
-          "title": "Dsc 2659",
-          "file": "images/car-meets/car-meet-1/DSC_2659.jpg"
+          "id": "cross-country-009",
+          "title": "Dsc03730",
+          "file": "photos-web/sports/cross-country/DSC03730.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC03730-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-010",
-          "title": "Dsc 2672",
-          "file": "images/car-meets/car-meet-1/DSC_2672.jpg"
+          "id": "cross-country-010",
+          "title": "Dsc03772",
+          "file": "photos-web/sports/cross-country/DSC03772.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC03772-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-011",
-          "title": "Dsc 2678",
-          "file": "images/car-meets/car-meet-1/DSC_2678.jpg"
+          "id": "cross-country-011",
+          "title": "Dsc03920",
+          "file": "photos-web/sports/cross-country/DSC03920.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC03920-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-012",
-          "title": "Dsc 2692",
-          "file": "images/car-meets/car-meet-1/DSC_2692.jpg"
+          "id": "cross-country-012",
+          "title": "Dsc04005",
+          "file": "photos-web/sports/cross-country/DSC04005.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04005-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-013",
-          "title": "Dsc 2693",
-          "file": "images/car-meets/car-meet-1/DSC_2693.jpg"
+          "id": "cross-country-013",
+          "title": "Dsc04017",
+          "file": "photos-web/sports/cross-country/DSC04017.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04017-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-014",
-          "title": "Dsc 2701",
-          "file": "images/car-meets/car-meet-1/DSC_2701.jpg"
+          "id": "cross-country-014",
+          "title": "Dsc04107",
+          "file": "photos-web/sports/cross-country/DSC04107.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04107-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-015",
-          "title": "Dsc 2702",
-          "file": "images/car-meets/car-meet-1/DSC_2702.jpg"
+          "id": "cross-country-015",
+          "title": "Dsc04206",
+          "file": "photos-web/sports/cross-country/DSC04206.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04206-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-016",
-          "title": "Dsc 2716",
-          "file": "images/car-meets/car-meet-1/DSC_2716.jpg"
+          "id": "cross-country-016",
+          "title": "Dsc04283",
+          "file": "photos-web/sports/cross-country/DSC04283.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04283-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-017",
-          "title": "Dsc 2719",
-          "file": "images/car-meets/car-meet-1/DSC_2719.jpg"
+          "id": "cross-country-017",
+          "title": "Dsc04370",
+          "file": "photos-web/sports/cross-country/DSC04370.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04370-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-018",
-          "title": "Dsc 2720",
-          "file": "images/car-meets/car-meet-1/DSC_2720.jpg"
+          "id": "cross-country-018",
+          "title": "Dsc04448",
+          "file": "photos-web/sports/cross-country/DSC04448.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04448-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-019",
-          "title": "Dsc 2726",
-          "file": "images/car-meets/car-meet-1/DSC_2726.jpg"
+          "id": "cross-country-019",
+          "title": "Dsc04524",
+          "file": "photos-web/sports/cross-country/DSC04524.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04524-thumb.jpg",
+          "w": 2000,
+          "h": 1334,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-020",
-          "title": "Dsc 2729",
-          "file": "images/car-meets/car-meet-1/DSC_2729.jpg"
+          "id": "cross-country-020",
+          "title": "Dsc04628",
+          "file": "photos-web/sports/cross-country/DSC04628.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04628-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-021",
-          "title": "Dsc 2741",
-          "file": "images/car-meets/car-meet-1/DSC_2741.jpg"
+          "id": "cross-country-021",
+          "title": "Dsc04680",
+          "file": "photos-web/sports/cross-country/DSC04680.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04680-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-022",
-          "title": "Dsc 2749",
-          "file": "images/car-meets/car-meet-1/DSC_2749.jpg"
+          "id": "cross-country-022",
+          "title": "Dsc04745",
+          "file": "photos-web/sports/cross-country/DSC04745.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04745-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-023",
-          "title": "Dsc 2770",
-          "file": "images/car-meets/car-meet-1/DSC_2770.jpg"
+          "id": "cross-country-023",
+          "title": "Dsc04963",
+          "file": "photos-web/sports/cross-country/DSC04963.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC04963-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-024",
-          "title": "Dsc 2790",
-          "file": "images/car-meets/car-meet-1/DSC_2790.jpg"
+          "id": "cross-country-024",
+          "title": "Dsc05131",
+          "file": "photos-web/sports/cross-country/DSC05131.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC05131-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-1-025",
-          "title": "Dsc 2805",
-          "file": "images/car-meets/car-meet-1/DSC_2805.jpg"
+          "id": "cross-country-025",
+          "title": "Dsc05297",
+          "file": "photos-web/sports/cross-country/DSC05297.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC05297-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
+        },
+        {
+          "id": "cross-country-026",
+          "title": "Dsc05378",
+          "file": "photos-web/sports/cross-country/DSC05378.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC05378-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
+        },
+        {
+          "id": "cross-country-027",
+          "title": "Dsc05710",
+          "file": "photos-web/sports/cross-country/DSC05710.jpg",
+          "thumb": "photos-web/sports/cross-country/DSC05710-thumb.jpg",
+          "w": 1333,
+          "h": 2000,
+          "featured": false
         }
       ]
     },
-    {
-      "id": "meet-car-meet-2",
-      "name": "Car Meet 2",
-      "date": "",
-      "location": "",
-      "description": "",
-      "coverImage": "images/car-meets/car-meet-2/DSC_3942.jpg",
-      "tag": "Monthly",
+    "football": {
+      "label": "Football",
       "photos": [
         {
-          "id": "meet-car-meet-2-001",
-          "title": "Dsc 3942",
-          "file": "images/car-meets/car-meet-2/DSC_3942.jpg"
+          "id": "football-013",
+          "title": "Football action \u2014 Greenville, SC",
+          "file": "photos-web/sports/football/DSC06862.jpg",
+          "thumb": "photos-web/sports/football/DSC06862-thumb.jpg",
+          "w": 1080,
+          "h": 1620,
+          "featured": true
         },
         {
-          "id": "meet-car-meet-2-002",
-          "title": "Dsc 3945",
-          "file": "images/car-meets/car-meet-2/DSC_3945.jpg"
+          "id": "football-001",
+          "title": "Dsc05915",
+          "file": "photos-web/sports/football/DSC05915.jpg",
+          "thumb": "photos-web/sports/football/DSC05915-thumb.jpg",
+          "w": 1620,
+          "h": 1080,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-2-003",
-          "title": "Dsc 3947",
-          "file": "images/car-meets/car-meet-2/DSC_3947.jpg"
+          "id": "football-002",
+          "title": "Football action \u2014 Greenville, SC",
+          "file": "photos-web/sports/football/DSC06041.jpg",
+          "thumb": "photos-web/sports/football/DSC06041-thumb.jpg",
+          "w": 1620,
+          "h": 1080,
+          "featured": true
         },
         {
-          "id": "meet-car-meet-2-004",
-          "title": "Dsc 3958",
-          "file": "images/car-meets/car-meet-2/DSC_3958.jpg"
+          "id": "football-003",
+          "title": "Dsc06051",
+          "file": "photos-web/sports/football/DSC06051.jpg",
+          "thumb": "photos-web/sports/football/DSC06051-thumb.jpg",
+          "w": 1080,
+          "h": 1620,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-2-005",
-          "title": "Dsc 3960",
-          "file": "images/car-meets/car-meet-2/DSC_3960.jpg"
+          "id": "football-004",
+          "title": "Dsc06180",
+          "file": "photos-web/sports/football/DSC06180.jpg",
+          "thumb": "photos-web/sports/football/DSC06180-thumb.jpg",
+          "w": 1620,
+          "h": 1080,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-2-006",
-          "title": "Dsc 3969",
-          "file": "images/car-meets/car-meet-2/DSC_3969.jpg"
+          "id": "football-005",
+          "title": "Dsc06240",
+          "file": "photos-web/sports/football/DSC06240.jpg",
+          "thumb": "photos-web/sports/football/DSC06240-thumb.jpg",
+          "w": 1620,
+          "h": 1080,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-2-007",
-          "title": "Dsc 3976",
-          "file": "images/car-meets/car-meet-2/DSC_3976.jpg"
+          "id": "football-006",
+          "title": "Dsc06357",
+          "file": "photos-web/sports/football/DSC06357.jpg",
+          "thumb": "photos-web/sports/football/DSC06357-thumb.jpg",
+          "w": 1620,
+          "h": 1080,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-2-008",
-          "title": "Dsc 3978",
-          "file": "images/car-meets/car-meet-2/DSC_3978.jpg"
+          "id": "football-007",
+          "title": "Football celebration \u2014 Greenville, SC",
+          "file": "photos-web/sports/football/DSC06441.jpg",
+          "thumb": "photos-web/sports/football/DSC06441-thumb.jpg",
+          "w": 1620,
+          "h": 1080,
+          "featured": true
         },
         {
-          "id": "meet-car-meet-2-009",
-          "title": "Dsc 3980",
-          "file": "images/car-meets/car-meet-2/DSC_3980.jpg"
+          "id": "football-008",
+          "title": "Dsc06621",
+          "file": "photos-web/sports/football/DSC06621.jpg",
+          "thumb": "photos-web/sports/football/DSC06621-thumb.jpg",
+          "w": 1620,
+          "h": 506,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-2-010",
-          "title": "Dsc 3991",
-          "file": "images/car-meets/car-meet-2/DSC_3991.jpg"
+          "id": "football-009",
+          "title": "Dsc06681",
+          "file": "photos-web/sports/football/DSC06681.jpg",
+          "thumb": "photos-web/sports/football/DSC06681-thumb.jpg",
+          "w": 1080,
+          "h": 1620,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-2-011",
-          "title": "Dsc 4014",
-          "file": "images/car-meets/car-meet-2/DSC_4014.jpg"
+          "id": "football-010",
+          "title": "Dsc06751",
+          "file": "photos-web/sports/football/DSC06751.jpg",
+          "thumb": "photos-web/sports/football/DSC06751-thumb.jpg",
+          "w": 1080,
+          "h": 1620,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-2-012",
-          "title": "Dsc 4024",
-          "file": "images/car-meets/car-meet-2/DSC_4024.jpg"
+          "id": "football-011",
+          "title": "Dsc06756",
+          "file": "photos-web/sports/football/DSC06756.jpg",
+          "thumb": "photos-web/sports/football/DSC06756-thumb.jpg",
+          "w": 1620,
+          "h": 1080,
+          "featured": false
         },
         {
-          "id": "meet-car-meet-2-013",
-          "title": "Dsc 4033",
-          "file": "images/car-meets/car-meet-2/DSC_4033.jpg"
+          "id": "football-012",
+          "title": "Dsc06760",
+          "file": "photos-web/sports/football/DSC06760.jpg",
+          "thumb": "photos-web/sports/football/DSC06760-thumb.jpg",
+          "w": 1080,
+          "h": 1620,
+          "featured": false
+        },
+        {
+          "id": "football-014",
+          "title": "Dsc06910",
+          "file": "photos-web/sports/football/DSC06910.jpg",
+          "thumb": "photos-web/sports/football/DSC06910-thumb.jpg",
+          "w": 1080,
+          "h": 1620,
+          "featured": false
+        },
+        {
+          "id": "football-015",
+          "title": "Dsc07035",
+          "file": "photos-web/sports/football/DSC07035.jpg",
+          "thumb": "photos-web/sports/football/DSC07035-thumb.jpg",
+          "w": 1620,
+          "h": 1080,
+          "featured": false
         }
       ]
     }
-  ],
-  "clients": [
-    {
-      "id": "Camaro-Aiden",
-      "name": "Camaro Aiden",
-      "password": "aiden2026",
-      "coverImage": "images/clients/Camaro-Aiden/DSC_4116.jpg",
-      "description": "",
-      "expires": null,
-      "photos": [
-        {
-          "id": "Camaro-Aiden-001",
-          "title": "Dsc 4116",
-          "file": "images/clients/Camaro-Aiden/DSC_4116.jpg"
-        },
-        {
-          "id": "Camaro-Aiden-002",
-          "title": "Dsc 4124",
-          "file": "images/clients/Camaro-Aiden/DSC_4124.jpg"
-        },
-        {
-          "id": "Camaro-Aiden-003",
-          "title": "Dsc 4132",
-          "file": "images/clients/Camaro-Aiden/DSC_4132.jpg"
-        },
-        {
-          "id": "Camaro-Aiden-004",
-          "title": "Dsc 4160",
-          "file": "images/clients/Camaro-Aiden/DSC_4160.jpg"
-        },
-        {
-          "id": "Camaro-Aiden-005",
-          "title": "Dsc 4166",
-          "file": "images/clients/Camaro-Aiden/DSC_4166.jpg"
-        },
-        {
-          "id": "Camaro-Aiden-006",
-          "title": "Dsc 4169",
-          "file": "images/clients/Camaro-Aiden/DSC_4169.jpg"
-        },
-        {
-          "id": "Camaro-Aiden-007",
-          "title": "Dsc 4173",
-          "file": "images/clients/Camaro-Aiden/DSC_4173.jpg"
-        }
-      ]
-    }
-  ]
+  },
+  "wildlife": {
+    "label": "Wildlife",
+    "photos": []
+  }
 }

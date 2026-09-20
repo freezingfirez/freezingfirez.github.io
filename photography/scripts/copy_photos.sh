@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-# Copy photos into the right images folder with numbered names.
+# Optional convenience: copy photos into the right folder from the terminal.
+# You can always just drag files into the folder in Finder instead — this
+# script is only here if you prefer the command line.
 #
 # Examples:
-#   ./scripts/copy_photos.sh automotive ~/Downloads/car-shoot/*.jpg
-#   ./scripts/copy_photos.sh meet greenville-march-2024 ~/Pictures/meet/*.jpg
-#   ./scripts/copy_photos.sh car mike-gt350 ~/Pictures/gt350/*.jpg
+#   ./scripts/copy_photos.sh sports football ~/Downloads/Football/*.jpg
+#   ./scripts/copy_photos.sh sports basketball ~/Downloads/Hoops/*.jpg
+#   ./scripts/copy_photos.sh wildlife ~/Downloads/Birds/*.jpg
 #
 # Then run: python3 scripts/sync_photos.py
 
@@ -15,22 +17,17 @@ cd "$ROOT"
 
 usage() {
   echo "Usage:"
-  echo "  $0 automotive <files...>"
-  echo "  $0 astronomy <files...>"
-  echo "  $0 meet <folder-name> <files...>"
-  echo "  $0 car <folder-name> <files...>"
+  echo "  $0 sports <category-name> <files...>"
+  echo "  $0 wildlife <files...>"
   exit 1
 }
 
 [[ $# -ge 2 ]] || usage
 
-kind="$1"
-shift
-
-copy_numbered() {
+copy_files() {
   local dest="$1"
+  shift
   mkdir -p "$dest"
-  local i=1
   for src in "$@"; do
     [[ -f "$src" ]] || continue
     ext="${src##*.}"
@@ -39,45 +36,27 @@ copy_numbered() {
       jpg|jpeg|png|webp) ;;
       *) echo "Skipping non-image: $src"; continue ;;
     esac
-    cp "$src" "$dest/$(printf '%02d.%s' "$i" "$ext_lower")"
-    echo "  -> $dest/$(printf '%02d.%s' "$i" "$ext_lower")"
-    i=$((i + 1))
+    cp "$src" "$dest/"
+    echo "  -> $dest/$(basename "$src")"
   done
 }
 
+kind="$1"
+shift
+
 case "$kind" in
-  automotive)
-    copy_numbered "images/automotive" "$@"
-    ;;
-  astronomy)
-    copy_numbered "images/astronomy" "$@"
-    ;;
-  meet)
+  sports)
     [[ $# -ge 2 ]] || usage
-    folder="$1"
+    category="$1"
     shift
-    copy_numbered "images/car-meets/$folder" "$@"
+    copy_files "photos/sports/$category" "$@"
     ;;
-  car)
-    [[ $# -ge 2 ]] || usage
-    folder="$1"
-    shift
-    copy_numbered "images/clients/$folder" "$@"
-    ;;
-  hero)
-    [[ -f "$1" ]] || usage
-    cp "$1" images/hero.jpg
-    echo "  -> images/hero.jpg"
-    ;;
-  portrait)
-    [[ -f "$1" ]] || usage
-    mkdir -p images/about
-    cp "$1" images/about/portrait.jpg
-    echo "  -> images/about/portrait.jpg"
+  wildlife)
+    copy_files "photos/wildlife" "$@"
     ;;
   *)
     usage
     ;;
 esac
 
-echo "Done. Run: python3 scripts/sync_photos.py"
+echo "Done. Now run: python3 scripts/sync_photos.py"
