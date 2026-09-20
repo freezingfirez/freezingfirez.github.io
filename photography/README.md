@@ -106,8 +106,7 @@ photography/
 │   ├── sports.html             ← Sports gallery (all categories, filterable)
 │   ├── wildlife.html           ← Wildlife portfolio gallery
 │   ├── rates.html              ← Packages + booking policy
-│   ├── book.html               ← Booking inquiry form
-│   └── about.html              ← About page
+│   └── book.html               ← Booking inquiry form
 ├── css/style.css               ← All styles (theme vars at the top)
 ├── js/core.js                  ← Nav, lightbox, lazy load, galleries
 ├── data/galleries.json         ← Auto-generated — don't hand-edit

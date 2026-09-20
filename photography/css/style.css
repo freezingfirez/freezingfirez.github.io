@@ -768,95 +768,6 @@ ul, ol { list-style: none; }
 }
 
 /* ============================================================
-   ABOUT PAGE
-   ============================================================ */
-.about-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
-}
-.about-img-wrap {
-  position: relative;
-}
-.about-img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  border-radius: var(--radius-lg);
-  filter: brightness(0.9) saturate(0.85);
-}
-.about-img-badge {
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-  width: 100px; height: 100px;
-  background: var(--amber);
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-shadow: 0 8px 32px rgba(232, 160, 32, 0.4);
-}
-.about-img-badge .year {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  color: var(--black);
-  line-height: 1;
-}
-.about-img-badge .since {
-  font-family: var(--font-mono);
-  font-size: 8px;
-  color: var(--black);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-.about-content { padding-top: 1rem; }
-.about-body {
-  color: var(--grey-hi);
-  font-weight: 300;
-  line-height: 1.8;
-  font-size: 1.05rem;
-}
-.about-body p + p { margin-top: 1.2rem; }
-.gear-list {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.gear-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-}
-.gear-item:first-child { border-top: 1px solid var(--border); }
-.gear-dot {
-  width: 6px; height: 6px;
-  background: var(--amber);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.gear-name {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: var(--grey-hi);
-}
-.gear-role {
-  margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  color: var(--grey-mid);
-  text-transform: uppercase;
-}
-
-/* ============================================================
    CONTACT PAGE
    ============================================================ */
 .contact-layout {
@@ -1256,8 +1167,6 @@ ul, ol { list-style: none; }
   .featured-grid .photo-card { height: auto; }
   .featured-grid .photo-card:first-child { grid-row: auto; }
   .featured-grid .photo-img { aspect-ratio: 4/3; height: auto; }
-  .about-layout { grid-template-columns: 1fr; }
-  .about-img-badge { right: 0; }
   .contact-layout { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .form-row { grid-template-columns: 1fr; }
